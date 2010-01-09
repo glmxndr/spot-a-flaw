@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @flag.user_id %>
+</p>
+
+<p>
+  <b>Fallacy:</b>
+  <%=h @flag.fallacy_id %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%=h @flag.topic_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @flag.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_flag_path(@flag) %> |
+<%= link_to 'Back', flags_path %>

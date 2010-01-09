@@ -1,0 +1,2 @@
+module FallaciesHelper
+end

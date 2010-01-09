@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @fallacy.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @fallacy.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_fallacy_path(@fallacy) %> |
+<%= link_to 'Back', fallacies_path %>
