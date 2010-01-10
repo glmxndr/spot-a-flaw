@@ -1,24 +1,31 @@
 <h1>Listing fallacies</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Short name</th>
-    <th>Content</th>
-  </tr>
 
+
+<ul class="fallacy list">
 <% for fallacy in @fallacies %>
-  <tr>
-    <td><%=h fallacy.title %></td>
-    <td><%=h fallacy.shortname %></td>
-    <td><%=textilize fallacy.content %></td>
-    <td><%= link_to 'Show', fallacy %></td>
-    <td><%= link_to 'Edit', edit_fallacy_path(fallacy) %></td>
-    <td><%= link_to 'Destroy', fallacy, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li>
+    <div class="actions">
+      <%= link_to 'Show', fallacy %>
+      <% if enabled_user %>
+        | <%= link_to 'Edit', edit_fallacy_path(fallacy) %>
+      <% end %>
+      <% if admin_user -%>
+        | <%= link_to 'Destroy', fallacy,
+              :confirm => 'Are you sure?',
+              :method => :delete %>
+      <% end -%>
+    </div>
+    <div class="title">
+      <span class="shortname"><%= fallacy.shortname %>: </span>
+      <span class="title"><%= link_to fallacy.title, fallacy_url(fallacy)%></span>
+    </div>
+  </li>
 <% end %>
-</table>
+</ul>
 
 <br />
 
-<%= link_to 'New fallacy', new_fallacy_path %>
+<%- if enabled_user -%>
+<%= link_to 'New fallacy', new_fallacy_path -%>
+<%- end -%>

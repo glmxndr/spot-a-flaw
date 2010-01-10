@@ -8,10 +8,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.about "about", :controller => "welcome", :action => "about"
 
-  map.resources :comments
-  map.resources :flags
-  map.resources :topics
-  map.resources :fallacies
+  map.resources :comments, :has_many => :comments
+  map.resources :flags, :has_many => :comments
+  map.resources :topics, :has_many => [:comments, :flags]
+  map.resources :fallacies, :has_many => :comments
   map.resources :users
   map.resources :user_sessions
 

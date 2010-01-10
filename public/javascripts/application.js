@@ -1,2 +1,9 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(function(){
+
+  // COMMENT FORMS
+  $('form.new_comment').hide().before('<span class="form comment toggle">Comment</span>');
+  $('span.comment.form.toggle').click(function(){
+    $(this).next('form.new_comment').toggle();
+  });
+
+});
