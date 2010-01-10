@@ -1,2 +1,0 @@
-class Fallacy < ActiveRecord::Base
-end
