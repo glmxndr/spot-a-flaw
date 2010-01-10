@@ -2,14 +2,16 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Title</th>
+    <th>Short name</th>
     <th>Content</th>
   </tr>
 
 <% for fallacy in @fallacies %>
   <tr>
-    <td><%=h fallacy.name %></td>
-    <td><%=h fallacy.content %></td>
+    <td><%=h fallacy.title %></td>
+    <td><%=h fallacy.shortname %></td>
+    <td><%=textilize fallacy.content %></td>
     <td><%= link_to 'Show', fallacy %></td>
     <td><%= link_to 'Edit', edit_fallacy_path(fallacy) %></td>
     <td><%= link_to 'Destroy', fallacy, :confirm => 'Are you sure?', :method => :delete %></td>

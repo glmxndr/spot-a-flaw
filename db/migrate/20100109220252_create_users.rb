@@ -3,9 +3,13 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :password
       t.boolean :admin
       t.boolean :enabled
+
+      # authlogic fields
+      t.string :crypted_password
+      t.string :password_salt
+      t.string :persistence_token
 
       t.timestamps
     end

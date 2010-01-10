@@ -1,4 +1,4 @@
-<h1>Editing user</h1>
+<h1>Editing Profile</h1>
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
@@ -13,15 +13,11 @@
   </p>
   <p>
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :admin %><br />
-    <%= f.check_box :admin %>
-  </p>
-  <p>
-    <%= f.label :enabled %><br />
-    <%= f.check_box :enabled %>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
   </p>
   <p>
     <%= f.submit "Update" %>

@@ -1,11 +1,15 @@
 <p>
-  <b>Name:</b>
-  <%=h @fallacy.name %>
+  <b>Title:</b>
+  <%=h @fallacy.title %>
+</p>
+<p>
+  <b>Short Name:</b>
+  <%=h @fallacy.shortname %>
 </p>
 
 <p>
   <b>Content:</b>
-  <%=h @fallacy.content %>
+  <%=textilize @fallacy.content %>
 </p>
 
 

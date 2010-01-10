@@ -1,6 +1,7 @@
 class CreateFallacies < ActiveRecord::Migration
   def self.up
     create_table :fallacies do |t|
+      t.string :shortname
       t.string :title
       t.text :content
 
