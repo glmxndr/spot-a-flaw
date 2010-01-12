@@ -9,20 +9,19 @@
 </p>
 
 <p>
-  <b>Password:</b>
-  <%=h @user.password %>
-</p>
-
-<p>
-  <b>Admin:</b>
-  <%=h @user.admin %>
-</p>
-
-<p>
   <b>Enabled:</b>
   <%=h @user.enabled %>
 </p>
 
+<% if admin_user -%>
+<p>
+  <b>Admin:</b>
+  <%=h @user.admin %>
+</p>
+<% end -%>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if can_edit_user(@user) -%>
+<%= link_to 'Edit', edit_user_path(@user) %>
+<% end -%>
+
+

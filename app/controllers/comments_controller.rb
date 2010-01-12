@@ -26,6 +26,19 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
 
+    if params[:comment][:parent_id]
+      @comment.parent_id = params[:comment][:parent_id]
+    end
+    if params[:comment][:flag_id]
+      @comment.flag_id = params[:comment][:flag_id]
+    end
+    if params[:comment][:topic_id]
+      @comment.topic_id = params[:comment][:topic_id]
+    end
+    if params[:comment][:fallacy_id]
+      @comment.parent_id = params[:comment][:fallacy_id]
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @comment }
@@ -34,6 +47,10 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @comment = Comment.find(params[:id])
   end
 
@@ -57,6 +74,11 @@ class CommentsController < ApplicationController
   # PUT /comments/1
   # PUT /comments/1.xml
   def update
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -74,6 +96,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @comment = Comment.find(params[:id])
     @comment.destroy
 

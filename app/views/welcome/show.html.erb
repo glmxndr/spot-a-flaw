@@ -14,7 +14,7 @@
   the fallacy
   <%= link_to flag.fallacy.shortname, fallacy_url(flag.fallacy) -%>
   in the topic
-  <%= link_to flag.topic.title, topic_flags_url(flag) -%>
+  <%= link_to flag.topic.title, topic_url(flag.topic) -%>
 </li>
 <% end %>
 </ul>
@@ -29,7 +29,7 @@
 <h2>Recent comments</h2>
 <ul>
 <% for comment in recent_comments %>
-<li><%= link_to comment.title, topic_url(topic) -%>
+<li><%= link_to comment.title, initial_content_url(comment)+"#comment_"+comment.id.to_s -%>
   by <%= comment.user.name %>
 </li>
 <% end %>

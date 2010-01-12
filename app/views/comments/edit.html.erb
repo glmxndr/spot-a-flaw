@@ -3,10 +3,20 @@
 <% form_for(@comment) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
+  <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
+
+<% if @comment.flag_id -%>
+  <input type="hidden" name="comment[flag_id]" value="<%= @comment.flag_id %>" />
+<% elsif @comment.fallacy_id -%>
+  <input type="hidden" name="comment[fallacy_id]" value="<%= @comment.fallacy_id %>" />
+<% elsif @comment.topic_id -%>
+  <input type="hidden" name="comment[topic_id]" value="<%= @comment.topic_id %>" />
+<% end -%>
+
+<% if @comment.parent_id -%>
+  <input type="hidden" name="comment[parent_id]" value="<%= @comment.parent_id %>" />
+<% end -%>
+
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -14,10 +24,6 @@
   <p>
     <%= f.label :content %><br />
     <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.label :edited %><br />
-    <%= f.check_box :edited %>
   </p>
   <p>
     <%= f.submit "Update" %>

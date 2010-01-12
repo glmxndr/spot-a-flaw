@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+
   # GET /users
   # GET /users.xml
   def index
-    if current_user == nil or not current_user.admin
+    if not admin_user
         flash[:error] = "You can't list the user profiles"
         redirect_to root_url
         return
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    if !allow_edit(current_user,params[:id].to_i)
+    unless can_edit_user(User.find(params[:id]))
       flash[:error] = "You can't view this profile"
       redirect_to root_url
       return
@@ -35,12 +36,11 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    if current_user != nil
+    unless can_register
       flash[:error] = "You must logout before signing up with another account"
       redirect_to root_url
       return
     end
-
 
     @user = User.new
 
@@ -52,23 +52,15 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-
     if params[:id]=='current'
       @user = current_user
     else
-      if !allow_edit(current_user,params[:id].to_i)
+      unless can_edit_user(User.find params[:id])
         flash[:error] = "You can't edit this profile"
         redirect_to root_url
         return
       end
       @user = User.find(params[:id])
-    end
-
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated profile."
-      redirect_to root_url
-    else
-      render :action => 'edit'
     end
   end
 
@@ -95,6 +87,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+    unless admin_user or @user.enabled
+        params[:user][:enabled] = false
+    end
+    unless admin_user or @user.admin
+        params[:user][:admin] = false
+    end
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
@@ -111,32 +110,17 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
+    unless can_edit_user(@user)
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @user.destroy
 
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
     end
-  end
-
-
-  private
-
-  ##
-  # defines if the given user can edit the user with given id
-  # @param pUser  a User instance, wanting to edit user with ID pId
-  # @param pId    the ID of the user to be edited by pUser
-  def allow_edit(user,id)
-    if user == nil
-      return false
-    elsif user.admin
-      return true
-    elsif user.id == id.to_i
-      return true
-    else
-      return false
-    end
-    #user == nil or (user.id != id.to_i and not user.admin)
   end
 
 end

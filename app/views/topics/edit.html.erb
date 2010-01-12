@@ -1,28 +1,27 @@
-<h1>Editing topic</h1>
+<h1>Edit topic</h1>
 
 <% form_for(@topic) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :origin %><br />
+    <%= f.text_area :origin,:size => "40x5" %>
+  </p>
+  <p>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
   </p>
   <p>
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </p>
   <p>
-    <%= f.label :origin %><br />
-    <%= f.text_area :origin %>
-  </p>
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </p>
-  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Cancel', @topic %>

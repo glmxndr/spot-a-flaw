@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup "signup" , :controller => "users",         :action => "new"
 
   map.about "about", :controller => "welcome", :action => "about"
+  map.help "help",   :controller => "welcome", :action => "help"
 
   map.resources :comments, :has_many => :comments
   map.resources :flags, :has_many => :comments

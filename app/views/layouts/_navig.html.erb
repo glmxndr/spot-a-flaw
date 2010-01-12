@@ -12,10 +12,14 @@
   </div>
 
   <div id="category_nav">
-    <%= link_to "Home", root_url -%>
-    <%= link_to "Topics", topics_url -%>
-    <%= link_to "Fallacies", fallacies_url -%>
-    <%= link_to "About", about_url -%>
+    <%= link_to "Home", root_url -%> |
+    <%= link_to "Topics", topics_url -%> |
+    <%= link_to "Fallacies", fallacies_url -%> |
+<% if admin_user -%>
+    <%= link_to "Users", users_url -%> |
+<% end -%>
+    <%= link_to "About", about_url -%> |
+    <%= link_to "Help", help_url -%>
   </div>
 
   <hr style="clear:both"/>

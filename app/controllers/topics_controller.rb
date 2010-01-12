@@ -74,6 +74,11 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.xml
   def destroy
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @topic = Topic.find(params[:id])
     @topic.destroy
 

@@ -1,9 +1,10 @@
 <h2><%=h @fallacy.title %> (<%=h @fallacy.shortname %>)</h2>
 
+<% if can_edit_fallacy() -%>
+<%= link_to 'Edit', edit_fallacy_path(@fallacy) %>
+<% end -%>
+
 <p>
   <%=textilize @fallacy.content %>
 </p>
 
-
-<%= link_to 'Edit', edit_fallacy_path(@fallacy) %> |
-<%= link_to 'Back', fallacies_path %>

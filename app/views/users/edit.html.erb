@@ -19,6 +19,27 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+
+<% if admin_user -%>
+  <p>
+    <%= f.label :enabled %><br />
+    <% if @user.enabled -%>
+      <%= f.check_box :enabled, {:checked => 'checked'} %>
+    <% else -%>
+      <%= f.check_box :enabled %>
+    <% end -%>
+  </p>
+  <p>
+    <%= f.label :admin %><br />
+    <% if @user.admin -%>
+      <%= f.check_box :admin, {:checked => 'checked'} %>
+    <% else -%>
+      <%= f.check_box :admin %>
+    <% end -%>
+
+  </p>
+<% end -%>
+
   <p>
     <%= f.submit "Update" %>
   </p>

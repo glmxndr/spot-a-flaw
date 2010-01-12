@@ -65,3 +65,10 @@ span.toggle.form{
     text-decoration:underline;
     cursor:pointer;
 }
+
+div.fallacy_topic{
+    border:1px dotted #AAA;
+    font-size:90%;
+    margin-left:2em;
+    padding:0.5em;
+}

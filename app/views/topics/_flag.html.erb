@@ -8,13 +8,21 @@
   </div>
   <hr/>
   <% if enabled_user -%>
-  <% form_for [flag,Comment.new] do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br/>
-    <%= f.text_area :content, :size => "40x5" %>
-    <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
-    <input type="hidden" name="comment[flag_id]" value="<%= flag.id %>" />
-    <%= f.submit "Send" %>
+    <% form_for [flag,Comment.new] do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %><br/>
+      <%= f.text_area :content, :size => "40x5" %>
+      <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
+      <input type="hidden" name="comment[flag_id]" value="<%= flag.id %>" />
+      <%= f.submit "Send" %>
+    <% end -%>
   <% end -%>
-<% end -%>
+
+  <div class="flag_comments">
+    <h4>Comments</h4>
+    <% for comment in flag.comments %>
+      <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
+    <% end %>
+  </div>
+
 </div>

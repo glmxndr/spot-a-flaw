@@ -74,6 +74,11 @@ class FallaciesController < ApplicationController
   # DELETE /fallacies/1
   # DELETE /fallacies/1.xml
   def destroy
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @fallacy = Fallacy.find(params[:id])
     @fallacy.destroy
 

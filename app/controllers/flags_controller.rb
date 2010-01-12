@@ -14,7 +14,7 @@ class FlagsController < ApplicationController
   # GET /flags/1.xml
   def show
     @flag = Flag.find(params[:id])
-
+    @topic = @flag.topic
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @flag }
@@ -74,6 +74,11 @@ class FlagsController < ApplicationController
   # DELETE /flags/1
   # DELETE /flags/1.xml
   def destroy
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @flag = Flag.find(params[:id])
     @flag.destroy
 
