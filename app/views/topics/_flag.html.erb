@@ -20,7 +20,7 @@
   <% end -%>
 
   <% if enabled_user -%>
-  <h4>New comment on this flag</h4>
+  <h4 class="toc newcomment">New comment on this flag</h4>
   <div class="toc newcomment">
     <% form_for [flag,Comment.new] do |f| %>
       <%= f.label :title %>
