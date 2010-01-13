@@ -1,6 +1,20 @@
-<div class="fallacy_topic">
-<h2><%= link_to @topic.title, topic_url(@topic) %></h2>
+<h2 class="toc" id="def">Flag definition</h2>
+<div class="toc def">
+<p>Flagged by <%=h @flag.user.name %> on
+    <%= link_to @flag.fallacy.shortname,fallacy_url(@flag.fallacy) -%>
+    <% if can_edit_flag(@flag) -%>
+    | <%= link_to 'Edit', edit_flag_path(@flag) %>
+    <% end -%>
+</p>
 
+<p>
+  <%=textilize @flag.content %>
+</p>
+</div>
+
+<h2 class="toc" id="topic">Related topic</h2>
+<div class="toc topic">
+<span class="Title"><%= link_to @topic.title, topic_url(@topic) %></span>
 <% if @topic.origin.length > 0 -%>
 <p class="topic origin">
   <em>
@@ -8,26 +22,26 @@
   </em>
 </p>
 <% end -%>
-
 <% if @topic.url.length > 0 -%>
 <p><b>Url:</b><%=h @topic.url %></p>
 <% end -%>
-
-<p>
+<div class="content">
   <%=textilize @topic.content %>
-</p>
+</div>
 </div>
 
-<h2>Flagged by <%=h @flag.user.name %> on
-    <%= link_to @flag.fallacy.shortname,fallacy_url(@flag.fallacy) -%>
-    fallacy
-</h2>
-
-<p>
-  <%=textilize @flag.content %>
-</p>
+<% if @flag.comments.length > 0 -%>
+<h2 class="toc" id="forum">Forum</h2>
+  <div class="toc forum">
+    <% for comment in @flag.comments %>
+      <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
+    <% end %>
+  </div>
+<% end -%>
 
 <% if enabled_user -%>
+<h2 class="toc" id="newcomment">New comment</h2>
+<div class="toc newcomment">
   <% form_for [@flag,Comment.new] do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %><br/>
@@ -36,20 +50,8 @@
     <input type="hidden" name="comment[flag_id]" value="<%= @flag.id %>" />
     <%= f.submit "Send" %>
   <% end -%>
+</div>
 <% end -%>
 
-<hr/>
 
-  <div class="flag_comments">
-    <h4>Comments</h4>
-    <% for comment in @flag.comments %>
-      <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
-    <% end %>
-  </div>
-
-
-<%= link_to "Topic",topic_url(@flag.topic) -%>
-<% if can_edit_flag(@flag) -%>
- | <%= link_to 'Edit', edit_flag_path(@flag) %>
-<% end -%>
 

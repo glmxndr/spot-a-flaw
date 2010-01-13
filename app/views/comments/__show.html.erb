@@ -1,7 +1,6 @@
 <div id="comment_<%=comment.id%>" class="comment">
 
-  <div class="title"><%= comment.title %></div>
-  <div>posted by <%= comment.user.name %></div>
+  <span class="title"><%= comment.title %></span> posted by <%= comment.user.name %>
   <div class="content">
     <%= textilize comment.content %>
   </div>

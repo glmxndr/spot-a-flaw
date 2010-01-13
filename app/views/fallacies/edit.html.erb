@@ -1,5 +1,5 @@
-<h1>Editing fallacy</h1>
-
+<h2 class="toc">Editing fallacy</h2>
+<div class="toc">
 <% form_for(@fallacy) do |f| %>
   <%= f.error_messages %>
 
@@ -19,6 +19,6 @@
     <%= f.submit "Update" %>
   </p>
 <% end %>
-
+</div>
 <%= link_to 'Show', @fallacy %> |
 <%= link_to 'Back', fallacies_path %>

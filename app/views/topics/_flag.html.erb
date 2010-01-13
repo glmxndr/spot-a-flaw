@@ -10,6 +10,15 @@
     <%= textilize flag.content %>
   </div>
 
+  <% if flag.comments.length > 0 -%>
+  <h4 class="toc forum">Forum</h4>
+  <div class="toc forum flag_comments">
+    <% for comment in flag.comments %>
+      <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
+    <% end %>
+  </div>
+  <% end -%>
+
   <% if enabled_user -%>
   <h4>New comment on this flag</h4>
   <div class="toc newcomment">
@@ -22,16 +31,6 @@
       <%= f.submit "Send" %>
     <% end -%>
   </div>
-  <% end -%>
-
-  <% if flag.comments.length > 0 -%>
-  <h4 class="toc forum">Forum</h4>
-  <div class="toc forum flag_comments">
-    <% for comment in flag.comments %>
-      <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
-    <% end %>
-  </div>
-
   <% end -%>
 
 </div>

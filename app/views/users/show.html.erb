@@ -1,3 +1,5 @@
+<h2 class="toc">Your profile</h2>
+<div class="toc">
 <p>
   <b>Name:</b>
   <%=h @user.name %>
@@ -19,7 +21,7 @@
   <%=h @user.admin %>
 </p>
 <% end -%>
-
+</div>
 <% if can_edit_user(@user) -%>
 <%= link_to 'Edit', edit_user_path(@user) %>
 <% end -%>

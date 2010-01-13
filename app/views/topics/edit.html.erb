@@ -1,5 +1,5 @@
-<h1>Edit topic</h1>
-
+<h2 class="toc">Edit topic</h2>
+<div class="toc">
 <% form_for(@topic) do |f| %>
   <%= f.error_messages %>
 
@@ -23,5 +23,5 @@
     <%= f.submit "Update" %>
   </p>
 <% end %>
-
+</div>
 <%= link_to 'Cancel', @topic %>
