@@ -24,8 +24,12 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.xml
   def new
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @comment = Comment.new
-
+    @comment.user_id = current_user.id
     if params[:comment][:parent_id]
       @comment.parent_id = params[:comment][:parent_id]
     end
@@ -57,7 +61,14 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @comment = Comment.new(params[:comment])
+    # make sure to set the comment's user_id to the current user...
+    @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
@@ -74,12 +85,11 @@ class CommentsController < ApplicationController
   # PUT /comments/1
   # PUT /comments/1.xml
   def update
-    unless admin_user
+    @comment = Comment.find(params[:id])
+    unless can_edit_comment(@comment)
       flash[:error] = 'Forbidden action.'
       redirect_to root_url
     end
-
-    @comment = Comment.find(params[:id])
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])

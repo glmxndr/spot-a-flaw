@@ -24,6 +24,10 @@ class TopicsController < ApplicationController
   # GET /topics/new
   # GET /topics/new.xml
   def new
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @topic = Topic.new
 
     respond_to do |format|
@@ -34,12 +38,20 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @topic = Topic.find(params[:id])
   end
 
   # POST /topics
   # POST /topics.xml
   def create
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @topic = Topic.new(params[:topic])
 
     respond_to do |format|
@@ -57,6 +69,10 @@ class TopicsController < ApplicationController
   # PUT /topics/1
   # PUT /topics/1.xml
   def update
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @topic = Topic.find(params[:id])
 
     respond_to do |format|

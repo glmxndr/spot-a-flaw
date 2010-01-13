@@ -1,10 +1,39 @@
-<h2><%=h @fallacy.title %> (<%=h @fallacy.shortname %>)</h2>
+<h2 class="toc" id="def">Fallacy definition</h2>
+<div class="toc def">
+<span class="title"><%=h @fallacy.title %> (<%=h @fallacy.shortname %>)</span>
+<%- if can_edit_fallacy() -%>
+ | <%= link_to 'Edit', edit_fallacy_path(@fallacy) %>
+<%- end -%>
 
-<% if can_edit_fallacy() -%>
-<%= link_to 'Edit', edit_fallacy_path(@fallacy) %>
+<div class="fallacy content">
+  <%=textilize @fallacy.content %>
+</div>
+</div>
+
+
+<% if @fallacy.comments.length > 0 -%>
+<h2 class="toc" id="forum">Forum</h2>
+<div class="toc forum">
+<% for comment in @fallacy.comments %>
+<%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
+<% end %>
+</div>
 <% end -%>
 
-<p>
-  <%=textilize @fallacy.content %>
-</p>
 
+<%- if enabled_user -%>
+<h2 class="toc" id="newcomment">New comment</h2>
+<div class="toc newcomment">
+  <%- form_for [@topic,Comment.new], :action => "create" do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br/>
+    <%= f.text_area :content, :size => "40x5" %>
+    <input
+       type="hidden"
+       name="comment[fallacy_id]"
+       value="<%= @fallacy.id%>" />
+    <br/>
+    <%= f.submit "Send" %>
+  <%- end -%>
+</div>
+<%- end -%>

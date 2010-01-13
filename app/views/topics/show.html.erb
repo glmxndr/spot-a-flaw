@@ -1,61 +1,43 @@
-<h2><%=h @topic.title %></h2>
+<h2 class="toc" id="def">Topic definition</h2>
+<div class="toc def">
 
+<span class="topic title"><%=h @topic.title %></span>
+<%- if can_edit_topic -%>
+ | <%= link_to 'Edit', edit_topic_path(@topic) %>
+<%- end -%>
 
 <% if @topic.origin.length > 0 -%>
-<p class="topic origin">
+<div class="topic origin">
   <em>
     <%=textilize @topic.origin %>
   </em>
-</p>
+</div>
 <% end -%>
 
 <% if @topic.url.length > 0 -%>
-<p><b>Url:</b><%=h @topic.url %></p>
+<div class="topic url"><b>Url:</b><%=h @topic.url %></div>
 <% end -%>
 
-<p>
+<div class="topic content">
   <%=textilize @topic.content %>
-</p>
+</div>
+
+</div>
 
 
-<% if enabled_user -%>
-<hr/>
-  <p>
-  <% form_for [@topic,Comment.new], :action => "create" do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br/>
-    <%= f.text_area :content, :size => "40x5" %>
-    <input
-       type="hidden"
-       name="comment[user_id]"
-       value="<%= current_user.id %>" />
-    <input
-       type="hidden"
-       name="comment[topic_id]"
-       value="<%= @topic.id%>" />
-    <br/>
-    <%= f.submit "Send" %>
-  <% end -%>
-  </p>
-<% end -%>
-
-
-<hr/>
-
-<h2>List of flagged fallacies</h2>
-
+<h2 class="toc" id="flags">Flagged fallacies</h2>
+<div class="toc flags closed">
 <% for flag in @topic.flags %>
 <%= render :partial => 'flag', :locals => { :flag => flag} %>
 <% end %>
+</div>
+
 
 <% if enabled_user -%>
-
-<p>Add a flag:
+<h2 class="toc" id="newflag">New flag</h2>
+<div class="toc newflag closed">
+<span class="title">Add a flag:</span>
 <% form_for [@topic,Flag.new] do |f| %>
-    <input
-       type="hidden"
-       name="flag[user_id]"
-       value="<%= current_user.id %>" />
     <input
        type="hidden"
        name="flag[topic_id]"
@@ -68,20 +50,40 @@
     %><br/>
     <%= f.text_area :content, :size => "40x10" %><br/>
     <%= f.submit "Send" %>
-
 <% end %>
-</p>
-
+</div>
 <% end -%>
 
-<hr/>
 
-<h2>List of comments on this topic</h2>
-
+<% if @topic.comments.length > 0 -%>
+<h2 class="toc" id="forum">Forum</h2>
+<div class="toc forum closed">
 <% for comment in @topic.comments %>
 <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
 <% end %>
+</div>
+<% end -%>
+
+<h2 class="toc" id="newcomment">New comment</h2>
+<div class="toc newcomment">
+<% if enabled_user -%>
+<div class="topic comment_form">
+  <% form_for [@topic,Comment.new], :action => "create" do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br/>
+    <%= f.text_area :content, :size => "40x5" %>
+    <input
+       type="hidden"
+       name="comment[topic_id]"
+       value="<%= @topic.id%>" />
+    <br/>
+    <%= f.submit "Send" %>
+  <% end -%>
+</div>
+</div>
+<% end -%>
 
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+
+
+

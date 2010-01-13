@@ -1,24 +1,48 @@
 body{
     background-color: #EEE;
+    width:60em;
+    margin:1em;
+    margin-left:10em;
+
 }
 
+/*******************/
+/* HEADER & FOOTER */
+.header,.footer{
+    text-align:center;
+}
+.header{
+    padding:0.25em;
+    background:url('../images/athena3.gif') no-repeat;
+    height:100px;
+}
+div.footer{
+   border-top:1px solid gray;
+   color:gray;
+   padding:1em;
+   font-size:90%;
+}
+
+/*******************/
+/*      NAVIG      */
 #user_nav{
     float:right;
     font-size:90%;
 }
-
 #content_nav{
     float:left;
     font-size:90%;
 }
-
+/*******************/
+/*       MAIN      */
 #main{
     background-color: #FFF;
     border:1px solid gray;
     margin:10px;
     padding:10px;
 }
-
+/*******************/
+/*      FLASH      */
 #flash_notice{
     background-color: #383;
     font-size:110%;
@@ -27,7 +51,6 @@ body{
     margin:2px;
     padding:2px;
 }
-
 #flash_error{
     background-color: #833;
     font-size:110%;
@@ -37,9 +60,6 @@ body{
     padding:2px;
 }
 
-ul.list{
-    max-width:600px;
-}
 
 ul.list div.actions{
     display:inline;
@@ -50,6 +70,13 @@ ul.list div.title{
     display:inline;
     font-weight:bold;
 }
+ul.list div.topic.desc{
+    padding:0;
+    margin:0;
+    margin-left:3em;
+    font-size: 90%;
+}
+
 ul.list span.shortname{
     display: inline-block;
     width: 10em;
@@ -71,4 +98,46 @@ div.fallacy_topic{
     font-size:90%;
     margin-left:2em;
     padding:0.5em;
+}
+
+/*******************/
+/* HEADERS         */
+h1,h2,h3,h4,h5,h6{
+    font-weight:bold;
+}
+h1{font-size:200%;}
+h2{font-size:170%;}
+h3{font-size:140%;}
+h4{font-size:120%;}
+h5{font-size:110%;}
+h6{font-size:100%;}
+
+div.content h1{font-size:120%;}
+div.content h2{font-size:120%;font-weight:normal;}
+div.content h3{font-size:110%;}
+div.content h4{font-size:110%;font-weight:normal;}
+div.content h5{font-size:100%;}
+div.content h6{font-size:100%;font-weight:normal;}
+
+h2.toc,h3.toc,h4.toc,h5.toc,h6.toc{
+    cursor:pointer;
+    border-bottom:1px solid gray;
+    padding:0.25em;
+    padding-left:50px;
+}
+
+hr{border:0;border-top:1px solid gray;margin:0.5em 0;}
+div#main hr{margin:0.5em 2em;}
+
+span.title{
+    font-size:140%;
+    font-weight:bold;
+}
+
+div.closed{
+    display:none;
+}
+
+blockquote{
+    font-style: italic;
 }

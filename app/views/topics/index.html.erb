@@ -1,14 +1,14 @@
-<h1>Listing topics</h1>
+<h2 class="toc">All topics</h2>
+
+<%- if enabled_user -%>
+<%= link_to 'New topic', new_topic_path -%>
+<%- end -%>
 
 <ul class="topic list">
 <% for topic in @topics %>
   <li>
-    <div class="topic title">
-      <strong><%=h topic.title%></strong>
-    </div>
-    <div class="topic desc">
-      <p><em><%=textilize topic.origin %></em></p>
-      <p><%= link_to 'Show', topic %>
+    <span class="topic title"><%= link_to topic.title,
+      topic_url(topic) %></span>
       <% if enabled_user %>
         | <%= link_to 'Edit', edit_topic_path(topic) %>
       <% end %>
@@ -17,6 +17,9 @@
               :confirm => 'Are you sure?',
               :method => :delete %>
       <% end -%>
+    <div class="topic desc">
+      <div><em><%=textilize topic.origin %></em></div>
+      <p>
       </p>
     </div>
   </li>
@@ -25,6 +28,3 @@
 
 <br />
 
-<%- if enabled_user -%>
-<%= link_to 'New topic', new_topic_path -%>
-<%- end -%>

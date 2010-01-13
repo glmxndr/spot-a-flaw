@@ -1,12 +1,15 @@
 
-<h2>Recent topics</h2>
+<h2 class="toc" id="topics">Recent topics</h2>
+<div class="toc topics">
 <ul>
 <% for topic in recent_topics %>
 <li><%= link_to topic.title, topic_url(topic) -%></li>
 <% end %>
 </ul>
+</div>
 
-<h2>Recent flags</h2>
+<h2 class="toc" id="flags">Recent flags</h2>
+<div class="toc flags">
 <ul>
 <% for flag in recent_flags %>
 <li><%= flag.user.name %>
@@ -18,15 +21,19 @@
 </li>
 <% end %>
 </ul>
+</div>
 
-<h2>Recent fallacies</h2>
+<h2 class="toc" id="fallacies">Recent fallacies</h2>
+<div class="toc fallacies">
 <ul>
 <% for fallacy in recent_fallacies %>
 <li><%= link_to fallacy.title, fallacy_url(fallacy) -%></li>
 <% end %>
 </ul>
+</div>
 
-<h2>Recent comments</h2>
+<h2 class="toc" id="comments">Recent comments</h2>
+<div class="toc comments">
 <ul>
 <% for comment in recent_comments %>
 <li><%= link_to comment.title, initial_content_url(comment)+"#comment_"+comment.id.to_s -%>
@@ -34,6 +41,7 @@
 </li>
 <% end %>
 </ul>
+</div>
 
 
 

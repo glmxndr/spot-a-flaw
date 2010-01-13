@@ -24,6 +24,10 @@ class FallaciesController < ApplicationController
   # GET /fallacies/new
   # GET /fallacies/new.xml
   def new
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @fallacy = Fallacy.new
 
     respond_to do |format|
@@ -34,12 +38,20 @@ class FallaciesController < ApplicationController
 
   # GET /fallacies/1/edit
   def edit
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @fallacy = Fallacy.find(params[:id])
   end
 
   # POST /fallacies
   # POST /fallacies.xml
   def create
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @fallacy = Fallacy.new(params[:fallacy])
 
     respond_to do |format|
@@ -57,6 +69,10 @@ class FallaciesController < ApplicationController
   # PUT /fallacies/1
   # PUT /fallacies/1.xml
   def update
+    unless enabled_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @fallacy = Fallacy.find(params[:id])
 
     respond_to do |format|

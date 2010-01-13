@@ -6,4 +6,10 @@ $(function(){
     $(this).next('form.new_comment').toggle();
   });
 
+  // TOC HEADERS
+  $('.toc:header').click(function(){
+      $(this).next('div.toc').toggle();
+  });
+
+
 });

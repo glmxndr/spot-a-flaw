@@ -1,6 +1,7 @@
-<h1>Listing fallacies</h1>
-
-
+<h2 class="toc">All fallacies</h2>
+<%- if enabled_user -%>
+<%= link_to 'New fallacy', new_fallacy_path -%>
+<%- end -%>
 
 <ul class="fallacy list">
 <% for fallacy in @fallacies %>
@@ -24,8 +25,3 @@
 <% end %>
 </ul>
 
-<br />
-
-<%- if enabled_user -%>
-<%= link_to 'New fallacy', new_fallacy_path -%>
-<%- end -%>
