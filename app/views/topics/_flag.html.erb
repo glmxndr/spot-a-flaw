@@ -1,13 +1,18 @@
-<div class="flag">
-  <div class="title">
-  <%= flag.user.name %> flagged this topic with
+<h3 class="toc flag">
   <%= link_to flag.fallacy.shortname, fallacy_url(flag.fallacy) %>
-  </div>
-  <div class="content">
+  by
+  <%= flag.user.name %>
+</h3>
+<div class="toc flag">
+
+  <h4 class="toc">Explanation</h4>
+  <div class="toc content">
     <%= textilize flag.content %>
   </div>
-  <hr/>
+
   <% if enabled_user -%>
+  <h4>New comment on this flag</h4>
+  <div class="toc newcomment">
     <% form_for [flag,Comment.new] do |f| %>
       <%= f.label :title %>
       <%= f.text_field :title %><br/>
@@ -16,13 +21,17 @@
       <input type="hidden" name="comment[flag_id]" value="<%= flag.id %>" />
       <%= f.submit "Send" %>
     <% end -%>
+  </div>
   <% end -%>
 
-  <div class="flag_comments">
-    <h4>Comments</h4>
+  <% if flag.comments.length > 0 -%>
+  <h4 class="toc forum">Forum</h4>
+  <div class="toc forum flag_comments">
     <% for comment in flag.comments %>
       <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
     <% end %>
   </div>
+
+  <% end -%>
 
 </div>

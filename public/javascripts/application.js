@@ -11,5 +11,22 @@ $(function(){
       $(this).next('div.toc').toggle();
   });
 
+  var h2_cpt=0;
+  $('h2.toc').each(function(){
+      h2_cpt++;
+      $(this).prepend(""+h2_cpt+".&nbsp;");
+      var h3_cpt=0;
+      $('h3.toc',$(this).next('div.toc')).each(function(){
+          h3_cpt++;
+          $(this).prepend(""+h2_cpt+"."+h3_cpt+".&nbsp;");
+          var h4_cpt=0;
+          $('h4.toc',$(this).next('div.toc')).each(function(){
+              h4_cpt++;
+              $(this).prepend(""+h2_cpt+"."+h3_cpt+"."+h4_cpt+".&nbsp;");
+          });
+      });
+  });
+
+
 
 });

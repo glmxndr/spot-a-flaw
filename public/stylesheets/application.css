@@ -105,11 +105,11 @@ div.fallacy_topic{
 h1,h2,h3,h4,h5,h6{
     font-weight:bold;
 }
-h1{font-size:200%;}
-h2{font-size:170%;}
-h3{font-size:140%;}
-h4{font-size:120%;}
-h5{font-size:110%;}
+h1{font-size:300%;}
+h2{font-size:200%;}
+h3{font-size:170%;}
+h4{font-size:150%;}
+h5{font-size:120%;}
 h6{font-size:100%;}
 
 div.content h1{font-size:120%;}
@@ -121,10 +121,39 @@ div.content h6{font-size:100%;font-weight:normal;}
 
 h2.toc,h3.toc,h4.toc,h5.toc,h6.toc{
     cursor:pointer;
-    border-bottom:1px solid gray;
-    padding:0.25em;
-    padding-left:50px;
+    border-bottom:1px solid black;
+    margin:1em 0;
 }
+
+h2.toc{
+    color:black;
+    font-size:150%;
+    padding:0 0 0.25em 50px;
+    border-bottom:1px solid gray;
+}
+h3.toc{
+    color:#666;
+    font-size:130%;
+    margin:0.75em 0;
+    padding:0 0 0.25em 70px;
+    border-bottom:1px solid #AAA;
+}
+h4.toc{
+    color:#888;
+    font-size:120%;
+    font-weight:normal;
+    font-style:italic;
+    margin:0.5em 0;
+    padding:0 0 0.25em 90px;
+    border-bottom:1px solid #CCC;
+}
+
+
+div.toc.forum{
+    display:none;
+}
+
+
 
 hr{border:0;border-top:1px solid gray;margin:0.5em 0;}
 div#main hr{margin:0.5em 2em;}

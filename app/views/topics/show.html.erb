@@ -64,9 +64,9 @@
 </div>
 <% end -%>
 
+<% if enabled_user -%>
 <h2 class="toc" id="newcomment">New comment</h2>
 <div class="toc newcomment">
-<% if enabled_user -%>
 <div class="topic comment_form">
   <% form_for [@topic,Comment.new], :action => "create" do |f| %>
     <%= f.label :title %>
