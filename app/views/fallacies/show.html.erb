@@ -10,6 +10,16 @@
 </div>
 </div>
 
+<% if @fallacy.topics.length > 0 -%>
+<h2 class="toc" id="topics">Topics flagged</h2>
+<div class="toc topics">
+<ul>
+<% for topic in @fallacy.topics %>
+<li><%= link_to topic.title, topic_url(topic) -%></li>
+<% end %>
+</ul>
+</div>
+<% end -%>
 
 <% if @fallacy.comments.length > 0 -%>
 <h2 class="toc" id="forum">Forum</h2>

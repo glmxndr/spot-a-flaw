@@ -27,6 +27,6 @@ $(function(){
       });
   });
 
-
+  $('div[id^=flash_]').fadeOut(5000);
 
 });

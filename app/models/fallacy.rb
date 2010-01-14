@@ -6,5 +6,6 @@ class Fallacy < ActiveRecord::Base
 
   has_many :comments
   has_many :flags
+  has_many :topics, :through => :flags
 
 end

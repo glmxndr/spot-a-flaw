@@ -6,5 +6,6 @@ class Topic < ActiveRecord::Base
 
   has_many :comments
   has_many :flags
+  has_many :fallacies, :through => :flags
 
 end

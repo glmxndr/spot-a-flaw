@@ -1,9 +1,12 @@
 body{
-    background-color: #EEE;
+    background-color: white;
+    color:black;
     width:60em;
     margin:1em;
     margin-left:10em;
-
+    margin-top:5em;
+    margin-bottom:5em;
+    font-family: 'Verdana', sans-serif;
 }
 
 /*******************/
@@ -12,19 +15,50 @@ body{
     text-align:center;
 }
 .header{
-    padding:0.25em;
-    background:url('../images/athena3.gif') no-repeat;
-    height:100px;
+    margin:0.5em 100px;
+    background:url('../images/athena3.png') no-repeat;
 }
 div.footer{
    border-top:1px solid gray;
    color:gray;
    padding:1em;
-   font-size:90%;
+   font-size:100%;
+   position:fixed;
+   bottom:0;
+   left:10em;
+   width:60em;
+   background:white;
+}
+.header *{
+    font-family: Georgia, serif;
+    margin:0;
+    padding:0.25em;
+}
+.header a{
+    text-decoration:none;
+    color:black;
+}
+.header a:hover{
+    background-color: transparent;
+    text-decoration:underline;
+    color:black;
+}
+
+.header .athena{
+    position:absolute;
+    top:0;
+    left:0;
 }
 
 /*******************/
 /*      NAVIG      */
+#navig{
+    position:fixed;
+    top:0;
+    left:10em;
+    width:60em;
+    background-color: white;
+}
 #user_nav{
     float:right;
     font-size:90%;
@@ -37,7 +71,7 @@ div.footer{
 /*       MAIN      */
 #main{
     background-color: #FFF;
-    border:1px solid gray;
+    border:0px solid gray;
     margin:10px;
     padding:10px;
 }
@@ -112,6 +146,7 @@ div.fallacy_topic{
 /*******************/
 /* HEADERS         */
 h1,h2,h3,h4,h5,h6{
+    font-family:Georgia, serif;
     font-weight:bold;
 }
 h1{font-size:300%;}
@@ -121,6 +156,9 @@ h4{font-size:150%;}
 h5{font-size:120%;}
 h6{font-size:100%;}
 
+div.content h1,div.content h2, div.content h3, div.content h4, div.content h5, div.content h6{
+font-family: sans-serif;
+}
 div.content h1{font-size:120%;}
 div.content h2{font-size:120%;font-weight:normal;}
 div.content h3{font-size:110%;}
@@ -144,8 +182,12 @@ h3.toc{
     color:#666;
     font-size:130%;
     margin:0.75em 0;
-    padding:0 0 0.25em 70px;
+    margin-left:20px;
+    padding:0 0 0.25em 50px;
     border-bottom:1px solid #AAA;
+}
+h3.toc + div.toc{
+    margin-left:10px;
 }
 h4.toc{
     color:#888;
@@ -153,16 +195,18 @@ h4.toc{
     font-weight:normal;
     font-style:italic;
     margin:0.5em 0;
-    padding:0 0 0.25em 90px;
+    margin-left:30px;
+    padding:0 0 0.25em 50px;
     border-bottom:1px solid #CCC;
+}
+h4.toc + div.toc{
+    margin-left:20px;
 }
 
 
 div.toc.forum{
     display:none;
 }
-
-
 
 hr{border:0;border-top:1px solid gray;margin:0.5em 0;}
 div#main hr{margin:0.5em 2em;}
