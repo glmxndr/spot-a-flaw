@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
     @comments = Comment.find(:all)
 
     respond_to do |format|

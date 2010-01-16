@@ -1,11 +1,18 @@
-<h2 class="toc" id="def">Topic definition</h2>
-<div class="toc def">
+<div class="top title">
+<h2>TOPIC PAGE
+</h2>
+<h1>&#151;&nbsp;<%=h @topic.title %>&nbsp;&#151</h1>
+</div>
 
-<span class="topic title"><%=h @topic.title %></span>
+<h2 class="toc" id="def">Topic definition
 <%- if can_edit_topic -%>
- | <%= link_to 'Edit', edit_topic_path(@topic) %>
+&nbsp;<span class="action"><%= link_to 'Edit', edit_topic_path(@topic) %></span>
 <%- end -%>
-
+<%- if admin_user -%>
+&nbsp;<span class="action"><%= link_to 'Destroy', @topic, :confirm => 'Are you sure?', :method => :delete %></span>
+<%- end -%>
+</h2>
+<div class="toc def">
 <% if @topic.origin.length > 0 -%>
 <div class="topic origin">
   <em>
@@ -36,7 +43,6 @@
 <% if enabled_user -%>
 <h2 class="toc" id="newflag">New flag</h2>
 <div class="toc newflag closed">
-<span class="title">Add a flag:</span>
 <% form_for [@topic,Flag.new] do |f| %>
     <input
        type="hidden"

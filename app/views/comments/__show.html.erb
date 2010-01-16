@@ -1,23 +1,29 @@
 <div id="comment_<%=comment.id%>" class="comment">
-
-  <span class="title"><%= comment.title %></span> posted by <%= comment.user.name %>
+<div class="comment_head">
+  <span class="title"><%= comment.title %></span><br/><em>posted by
+  <%= comment.user.name %> on <%= comment.created_at.to_s(:long) %></em>
+</div>
+<div class="comment_body">
   <div class="content">
     <%= textilize comment.content %>
   </div>
 
-  <% if enabled_user -%>
-    <% form_for [comment,Comment.new] do |f| %>
+  <%- if enabled_user -%>
+    <%- form_for [comment,Comment.new] do |f| -%>
       <%= f.label :title %>
       <%= f.text_field :title %><br/>
       <%= f.text_area :content, :size => "40x5" %>
       <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>" />
-      <input type="hidden" name="comment[parent_id]" value="<%= comment.id %>" />
+      <input type="hidden" name="comment[parent_id]" value="<%= comment.id %>" /><br/>
       <%= f.submit "Send" %>
-    <% end %>
-  <% end -%>
+    <%- end -%>
+  <%- end -%>
 
-  <% for subcomment in comment.children %>
-  <%= render :partial => 'comments/_show', :locals => {:comment => subcomment} %>
-  <% end %>
+</div>
+<div class="comment_forum">
 
+  <%- for subcomment in comment.children -%>
+    <%= render :partial => 'comments/_show', :locals => {:comment => subcomment} %>
+  <%- end -%>
+</div>
 </div>

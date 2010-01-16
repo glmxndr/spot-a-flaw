@@ -2,6 +2,11 @@ class FlagsController < ApplicationController
   # GET /flags
   # GET /flags.xml
   def index
+    unless admin_user
+      flash[:error] = 'Forbidden action.'
+      redirect_to root_url
+    end
+
     @flags = Flag.find(:all)
 
     respond_to do |format|
@@ -21,26 +26,10 @@ class FlagsController < ApplicationController
     end
   end
 
-  # GET /flags/new
-  # GET /flags/new.xml
-  def new
-    unless enabled_user
-      flash[:error] = 'Forbidden action.'
-      redirect_to root_url
-    end
-
-    @flag = Flag.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @flag }
-    end
-  end
-
   # GET /flags/1/edit
   def edit
     @flag = Flag.find(params[:id])
-    unless can_edit_flag(@flag)
+    unless can_edit_flag @flag
       flash[:error] = 'Forbidden action.'
       redirect_to root_url
     end
@@ -93,16 +82,17 @@ class FlagsController < ApplicationController
   # DELETE /flags/1
   # DELETE /flags/1.xml
   def destroy
-    unless admin_user
+    @flag = Flag.find(params[:id])
+    unless can_edit_flag @flag
       flash[:error] = 'Forbidden action.'
       redirect_to root_url
     end
 
-    @flag = Flag.find(params[:id])
+
     @flag.destroy
 
     respond_to do |format|
-      format.html { redirect_to(flags_url) }
+      format.html { redirect_to root_url }
       format.xml  { head :ok }
     end
   end

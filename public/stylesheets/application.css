@@ -94,6 +94,9 @@ div.footer{
     padding:2px;
 }
 
+#main div.top.title{
+    text-align:center;
+}
 
 ul.list div.actions{
     display:inline;
@@ -149,7 +152,7 @@ h1,h2,h3,h4,h5,h6{
     font-family:Georgia, serif;
     font-weight:bold;
 }
-h1{font-size:300%;}
+h1{font-size:250%;}
 h2{font-size:200%;}
 h3{font-size:170%;}
 h4{font-size:150%;}
@@ -170,6 +173,10 @@ h2.toc,h3.toc,h4.toc,h5.toc,h6.toc{
     cursor:pointer;
     border-bottom:1px solid black;
     margin:1em 0;
+}
+h1.toc{
+    text-align:center;
+    text-transform:uppercase;
 }
 
 h2.toc{
@@ -203,8 +210,18 @@ h4.toc + div.toc{
     margin-left:20px;
 }
 
+div.toc{
+    padding:0em 1em;
+}
 
 div.toc.forum{
+    display:none;
+}
+
+div.comment_head{
+    cursor:pointer;
+}
+div.comment_body{
     display:none;
 }
 
@@ -214,6 +231,30 @@ div#main hr{margin:0.5em 2em;}
 span.title{
     font-size:140%;
     font-weight:bold;
+}
+
+span.action{
+    cursor:pointer;
+    font-family:Verdana,sans-serif;
+    font-size:10pt;
+    font-weight:normal;
+    border-bottom:1px dotted gray;
+    color:gray;
+}
+
+span.action:hover{
+    background:black;
+    color:white;
+}
+
+span.action a{
+    text-decoration:none;
+    color:gray;
+}
+
+a {
+    text-decoration:none;
+    border-bottom:1px dotted gray;
 }
 
 div.closed{

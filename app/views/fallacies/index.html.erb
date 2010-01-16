@@ -1,22 +1,23 @@
-<h2 class="toc">All fallacies</h2>
-<%- if enabled_user -%>
-<%= link_to 'New fallacy', new_fallacy_path -%>
-<%- end -%>
+<h1 class="toc">Fallacies Page</h1>
+
+<h2 class="toc" id="all">All fallacies</h2>
+<div class="toc all">
+
+<%= render :partial => 'index_sort' %>
 
 <ul class="fallacy list">
 <% for fallacy in @fallacies %>
   <li>
-    <div class="actions">
-      <%= link_to 'Show', fallacy %>
-      <% if enabled_user %>
-        | <%= link_to 'Edit', edit_fallacy_path(fallacy) %>
-      <% end %>
-      <% if admin_user -%>
-        | <%= link_to 'Destroy', fallacy,
+<% if enabled_user %>
+<span clas="action"><%= link_to 'Edit', edit_fallacy_path(fallacy) %></span>&nbsp;
+<% end %>
+<% if admin_user -%>
+<span class="action>"<%= link_to 'Destroy', fallacy,
               :confirm => 'Are you sure?',
-              :method => :delete %>
-      <% end -%>
-    </div>
+              :method => :delete %></span>&nbsp;
+<% end -%>
+    <input type="hidden" class="creation" value="<%= fallacy.created_at %>"/>
+    <input type="hidden" class="update" value="<%= fallacy.updated_at %>"/>
     <div class="title">
       <span class="shortname"><%= fallacy.shortname %>: </span>
       <span class="title"><%= link_to fallacy.title, fallacy_url(fallacy)%></span>
@@ -24,4 +25,28 @@
   </li>
 <% end %>
 </ul>
+
+<%- if enabled_user -%>
+<h2 class="toc" id="new">New fallacy</h2>
+<div class="toc new closed">
+<% form_for(Fallacy.new) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :shortname %><br />
+    <%= f.text_field :shortname %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+</div>
+<%- end -%>
 

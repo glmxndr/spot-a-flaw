@@ -1,14 +1,40 @@
 $(function(){
 
   // COMMENT FORMS
-  $('form.new_comment').hide().before('<span class="form comment toggle">Comment</span>');
+  $('div.comment form.new_comment').hide().before('<span class="form comment toggle">Comment</span>');
   $('span.comment.form.toggle').click(function(){
-    $(this).next('form.new_comment').toggle();
+    $(this).next('form.new_comment').toggle(500);
   });
+
+  $('div.comment_head').click(function(){
+    $(this).next('div.comment_body').toggle(500);
+  });
+
 
   // TOC HEADERS
   $('.toc:header').click(function(){
-      $(this).next('div.toc').toggle();
+      $(this).next('div.toc').toggle(500);
+  });
+
+  $('div.toc.forum').each(function(){
+    var self = $(this);
+    var closeAll = $('<span/>')
+      .append('Close all')
+      .addClass('action')
+      .click(function(){
+        $('div.comment_body',self).hide();
+      });
+    var openAll  = $('<span/>')
+      .append('Open all')
+      .addClass('action')
+      .click(function(){
+        $('div.comment_body',self).show();
+      });
+      self
+        .prepend(closeAll)
+        .prepend('&nbsp;')
+        .prepend(openAll);
+
   });
 
   var h2_cpt=0;
@@ -30,3 +56,46 @@ $(function(){
   $('div[id^=flash_]').fadeOut(5000);
 
 });
+
+
+SpotAFlaw = {};
+$S = SpotAFlaw;
+
+$S.sortTopicList = function(el, items){
+  var self = $(el);
+  var creation = self.hasClass('creation');
+  var update = self.hasClass('update');
+  var title = self.hasClass('title');
+  items.selso({
+    extract:function(e){
+      return creation
+        ?$('input.creation',e).val()
+        :update
+          ?$('input.update',e).val()
+          :$('span.title',e).text();
+    },
+    type:'alpha',
+    direction:$('input.sortby:checked').val() || 'asc'
+  });
+};
+
+$S.sortFallacyList = function(el, items){
+  var self = $(el);
+  var creation = self.hasClass('creation');
+  var update = self.hasClass('update');
+  var shortname = self.hasClass('short');
+  var title = self.hasClass('title');
+  items.selso({
+    extract:function(e){
+      return creation
+        ?$('input.creation',e).val()
+        :update
+          ?$('input.update',e).val()
+            :shortname
+              ?$('span.shortname',e).text()
+              :$('span.title',e).text();
+    },
+    type:'alpha',
+    direction:$('input.sortby:checked').val() || 'asc'
+  });
+};

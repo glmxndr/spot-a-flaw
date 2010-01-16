@@ -96,7 +96,13 @@ class FallaciesController < ApplicationController
     end
 
     @fallacy = Fallacy.find(params[:id])
+
+    @fallacy.comments.each {|c| c.destroy}
+    @fallacy.flags.each {|c| c.destroy}
+
     @fallacy.destroy
+
+
 
     respond_to do |format|
       format.html { redirect_to(fallacies_url) }

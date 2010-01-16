@@ -1,10 +1,20 @@
-<h2 class="toc" id="def">Fallacy definition</h2>
-<div class="toc def">
-<span class="title"><%=h @fallacy.title %> (<%=h @fallacy.shortname %>)</span>
-<%- if can_edit_fallacy() -%>
- | <%= link_to 'Edit', edit_fallacy_path(@fallacy) %>
-<%- end -%>
+<div class="top title">
+<h2>FALLACY PAGE</h2>
+<h1>&#151;&nbsp;<%=h @fallacy.title %>&nbsp;&#151</h1>
+</center>
+</div>
 
+
+<h2 class="toc" id="def">Fallacy definition (short
+  name: <em><%=h @fallacy.shortname %></em>)
+<%- if enabled_user -%>
+&nbsp;<span class="action"><%= link_to 'Edit', edit_fallacy_path(@fallacy) %></span>
+<%- end -%>
+<%- if admin_user -%>
+&nbsp;<span class="action"><%= link_to 'Destroy', @fallacy, :confirm => 'Are you sure?', :method => :delete %></span>
+<%- end -%>
+</h2>
+<div class="toc def">
 <div class="fallacy content">
   <%=textilize @fallacy.content %>
 </div>

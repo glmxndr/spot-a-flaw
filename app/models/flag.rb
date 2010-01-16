@@ -6,6 +6,6 @@ class Flag < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
   belongs_to :fallacy
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
 end
