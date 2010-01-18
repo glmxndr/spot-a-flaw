@@ -1,19 +1,45 @@
 $(function(){
 
+  // TEXTILE PREVIEW
+  $('textarea').each(function(){
+    var self = $(this);
+    var div = $('<div class="textile_preview">');
+    var edit = $('<div class="edit content">');
+    var preview = $('<div class="preview content">');
+
+    div.append(edit);
+    div.append(preview);
+    div.append('<hr/>');
+
+    self.after(div);
+    self.remove().appendTo(edit);
+    self.after('<a class="tip" href="http://textile.thresholdstate.com/">Format your content with Textile</a>');
+
+    self.keyup(function(){
+      preview.html($.textile(self.val()));
+    });
+    self.keyup();
+    self.resize(function(){
+      preview.height(self.height());
+    });
+    self.resize();
+
+  });
+
   // COMMENT FORMS
   $('div.comment form.new_comment').hide().before('<span class="form comment toggle">Comment</span>');
   $('span.comment.form.toggle').click(function(){
-    $(this).next('form.new_comment').toggle(500);
+    $(this).next('form.new_comment').toggle();
   });
 
   $('div.comment_head').click(function(){
-    $(this).next('div.comment_body').toggle(500);
+    $(this).next('div.comment_body').toggle();
   });
 
 
   // TOC HEADERS
   $('.toc:header').click(function(){
-      $(this).next('div.toc').toggle(500);
+      $(this).next('div.toc').toggle();
   });
 
   $('div.toc.forum').each(function(){
@@ -99,3 +125,4 @@ $S.sortFallacyList = function(el, items){
     direction:$('input.sortby:checked').val() || 'asc'
   });
 };
+

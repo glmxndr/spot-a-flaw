@@ -2,4 +2,10 @@
 module ApplicationHelper
 
 
+  def trunc(text, wordcount = 10)
+    text.split[0..(wordcount-1)].join(" ") + (thought.split.size > wordcount ? "..." : "")
+  end
+
+
+
 end

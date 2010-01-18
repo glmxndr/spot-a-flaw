@@ -15,14 +15,14 @@
 <div class="toc def">
 <% if @topic.origin.length > 0 -%>
 <div class="topic origin">
-  <em>
-    <%=textilize @topic.origin %>
-  </em>
+<%=textilize @topic.origin %>
 </div>
 <% end -%>
 
 <% if @topic.url.length > 0 -%>
-<div class="topic url"><b>Url:</b><%=h @topic.url %></div>
+<div class="topic url">
+  <a href="<%= @topic.url %>"><%= truncate @topic.url, :length => 50 %></a>
+</div>
 <% end -%>
 
 <div class="topic content">
@@ -31,14 +31,14 @@
 
 </div>
 
-
+<% if @topic.flags.length > 0 -%>
 <h2 class="toc" id="flags">Flagged fallacies</h2>
 <div class="toc flags closed">
 <% for flag in @topic.flags %>
 <%= render :partial => 'flag', :locals => { :flag => flag} %>
 <% end %>
 </div>
-
+<% end -%>
 
 <% if enabled_user -%>
 <h2 class="toc" id="newflag">New flag</h2>
