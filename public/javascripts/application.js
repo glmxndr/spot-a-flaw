@@ -3,9 +3,9 @@ $(function(){
   // TEXTILE PREVIEW
   $('textarea').each(function(){
     var self = $(this);
-    var div = $('<div class="textile_preview">');
-    var edit = $('<div class="edit content">');
-    var preview = $('<div class="preview content">');
+    var div = $('<div class="textile_preview"/>');
+    var edit = $('<div class="edit content"/>');
+    var preview = $('<div class="preview content"/>');
 
     div.append(edit);
     div.append(preview);
@@ -19,10 +19,6 @@ $(function(){
       preview.html($.textile(self.val()));
     });
     self.keyup();
-    self.resize(function(){
-      preview.height(self.height());
-    });
-    self.resize();
 
   });
 

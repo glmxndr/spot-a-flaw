@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :fallacies, :has_many => :comments
   map.resources :users
   map.resources :user_sessions
+  map.resources :tags
 
   # The priority is based upon order of creation: first created -> highest priority.
 

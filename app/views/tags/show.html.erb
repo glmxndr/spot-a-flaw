@@ -1,0 +1,23 @@
+<div class="top title">
+<h2>TAG PAGE
+</h2>
+<h1>&#151;&nbsp;<%= @tag.name %>&nbsp;&#151</h1>
+</div>
+
+<h2 class="toc">Topic list</h2>
+<div class="toc">
+<%- if @tag.count > 0 -%>
+
+This tag has the following topics attached:
+<ul>
+<% for topic in @tag.topics %>
+<li><%= link_to topic.title, topic %></li>
+<% end %>
+</ul>
+
+<%- else -%>
+
+This tag has no topic attached.
+
+<%- end -%>
+</div>

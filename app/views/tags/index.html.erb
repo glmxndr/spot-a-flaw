@@ -1,0 +1,24 @@
+<h1 class="toc">Tags Page</h1>
+
+
+<h2 class="toc">Listing tags</h2>
+<div class="toc">
+<table>
+  <tr>
+    <th>Tag name</th>
+    <th>Times used</th>
+  </tr>
+
+<% for tag in @tags %>
+  <tr>
+    <td><%=h tag.name %></td>
+    <td><%=h tag.count %></td>
+    <td><%= link_to 'Show', tag %></td>
+<% if admin_user -%>
+    <td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end -%>
+  </tr>
+<% end %>
+</table>
+</div>
+

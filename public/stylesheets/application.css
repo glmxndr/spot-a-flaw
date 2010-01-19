@@ -18,20 +18,26 @@ a {
     border-bottom:1px dotted gray;
 }
 
+textarea{
+    resize: vertical;
+}
+
 div.textile_preview textarea{
     display:block;
+    width:95%;
 }
 
 div.textile_preview div.edit, div.textile_preview div.preview{
-    padding:0.5em;
+    margin:2px;
     display:block;
     float:left;
+    width:45%;
 }
 
 div.textile_preview div.preview{
+    padding:0.5em;
     border:1px dotted gray;
     font-size:90%;
-    margin:0.5em;
     overflow:auto;
 }
 

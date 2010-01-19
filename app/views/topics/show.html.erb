@@ -29,6 +29,14 @@
   <%=textilize @topic.content %>
 </div>
 
+<% unless @topic.tags.empty? -%>
+<div class="tags">
+Tags : <% for tag in @topic.tags -%>
+<b><%= tag.name %></b>
+<% end -%>
+</div>
+<% end -%>
+
 </div>
 
 <% if @topic.flags.length > 0 -%>
