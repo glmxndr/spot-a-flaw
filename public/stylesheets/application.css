@@ -239,10 +239,14 @@ div.content h5{font-size:100%;}
 div.content h6{font-size:100%;font-weight:normal;}
 
 h2.toc,h3.toc,h4.toc,h5.toc,h6.toc{
-    cursor:pointer;
     border-bottom:1px solid black;
     margin:1em 0;
 }
+h2.toc:hover,h3.toc:hover,h4.toc:hover,h5.toc:hover,h6.toc:hover{
+    background:#eaeaea;
+}
+
+
 h1.toc{
     text-align:center;
     text-transform:uppercase;
@@ -299,6 +303,12 @@ div.comment_body{
 
 hr{border:0;border-top:1px solid gray;margin:0.5em 0;}
 div#main hr{margin:0.5em 2em;}
+
+h2.toc span.ui-icon, h3.toc span.ui-icon, h4.toc span.ui-icon, h5.toc span.ui-icon{
+    display:inline-block;
+    margin:0 5px;
+    cursor:pointer;
+}
 
 span.title{
     font-size:140%;

@@ -34,9 +34,6 @@ $(function(){
 
 
   // TOC HEADERS
-  $('.toc:header').click(function(){
-      $(this).next('div.toc').toggle();
-  });
 
   $('div.toc.forum').each(function(){
     var self = $(this);
@@ -75,6 +72,16 @@ $(function(){
       });
   });
 
+  $('h2,h3,h4,h5').filter('.toc').each(function(){
+    var self = $(this);
+    var span = $("<span class='ui-icon ui-icon-triangle-2-n-s'/>");
+    self.prepend(span);
+    span.click(function(){
+      self.next('div.toc').slideToggle('fast');
+    });
+  });
+
+
   $('div[id^=flash_]').fadeOut(5000);
 
 });
@@ -82,8 +89,6 @@ $(function(){
 
 
 $(function(){
-
-
 
   var items = $('ul.list li');
   $('span.action.sortby').click(function(){
@@ -117,46 +122,4 @@ $(function(){
 
 });
 
-
-SpotAFlaw = {};
-$S = SpotAFlaw;
-
-$S.sortTopicList = function(el, items){
-  var self = $(el);
-  var creation = self.hasClass('creation');
-  var update = self.hasClass('update');
-  var title = self.hasClass('title');
-  items.selso({
-    extract:function(e){
-      return creation
-        ?$('input.creation',e).val()
-        :update
-          ?$('input.update',e).val()
-          :$('span.title',e).text();
-    },
-    type:'alpha',
-    direction:$('input.sortby:checked').val() || 'asc'
-  });
-};
-
-$S.sortFallacyList = function(el, items){
-  var self = $(el);
-  var creation = self.hasClass('creation');
-  var update = self.hasClass('update');
-  var shortname = self.hasClass('short');
-  var title = self.hasClass('title');
-  items.selso({
-    extract:function(e){
-      return creation
-        ?$('input.creation',e).val()
-        :update
-          ?$('input.update',e).val()
-            :shortname
-              ?$('span.shortname',e).text()
-              :$('span.title',e).text();
-    },
-    type:'alpha',
-    direction:$('input.sortby:checked').val() || 'asc'
-  });
-};
 
