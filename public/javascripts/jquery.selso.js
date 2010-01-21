@@ -105,16 +105,16 @@
 
       orderAlpha: function(a,b){
         if (a==b){
-          console.log(a+' = '+b);
+          //console.log(a+' = '+b);
           return 0;
         }
         var array = [a,b];
         array.sort();
         if (array[0]==a){
-          console.log(a+' < '+b);
+          //console.log(a+' < '+b);
           return -1;
         }
-        console.log(a+' > '+b);
+        //console.log(a+' > '+b);
         return 1;
 
       },
@@ -133,7 +133,7 @@
           while(i>=j && (comp = (orderFn(lArray[i-j],lArray[i])>0))) {
             j++;
           }
-          console.log(j);
+          //console.log(j);
           if (j>0){
             tmp = lArray.slice(0,i-j+1);
             tmp.push(lArray[i]);

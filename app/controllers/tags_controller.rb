@@ -11,7 +11,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-
+    @topics = @tag.topics
     respond_to do |format|
       format.html
       format.xml  { render :xml => @topic }

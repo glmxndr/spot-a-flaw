@@ -80,6 +80,44 @@ $(function(){
 });
 
 
+
+$(function(){
+
+
+
+  var items = $('ul.list li');
+  $('span.action.sortby').click(function(){
+    $('span.action.sortby span').remove();
+    var self = $(this);
+    var arrow = $("<span class='ui-icon'>");
+    self.prepend(arrow);
+    var sortDir;
+    if (self.hasClass('asc')){
+      sortDir="desc";
+      arrow.addClass('ui-icon-triangle-1-n');
+      self.addClass('desc').removeClass('asc');
+    }
+    else {
+      sortDir = "asc";
+      arrow.addClass('ui-icon-triangle-1-s');
+      self.addClass('asc').removeClass('desc');
+    }
+    var sortby = self.attr('alt');
+    var extractFn = function(e){
+      return $('span.'+sortby,e).text();
+    };
+    items.selso({
+      extract:extractFn,
+      type:'alpha',
+      direction:sortDir
+    });
+  });
+
+  $('span.action.sortby[alt=title]').click();
+
+});
+
+
 SpotAFlaw = {};
 $S = SpotAFlaw;
 

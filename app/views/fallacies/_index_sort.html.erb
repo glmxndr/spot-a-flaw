@@ -1,21 +1,5 @@
 Sort by :
-<span class="action sortby creation">creation time</span>
-| <span class="action sortby update">update time</span>
-| <span class="action sortby title">short name</span>
-| <span class="action sortby title">title</span>
-| <input type="radio"
-         name="sortdirection"
-         class="sortby asc"
-         value="asc"
-         selected="selected"/>&nbsp;ascending
-<input type="radio"
-         name="sortdirection"
-         class="sortby asc"
-         value="desc"/>&nbsp;descending
-
-<script type="text/javascript">
-$(function(){
-  var items = $('ul.fallacy.list li');
-  $('span.action.sortby').click(function(){$S.sortFallacyList(this,items);});
-});
-</script>
+<span alt="creation" class="action sortby">creation time</span>
+| <span alt="update" class="action sortby">update time</span>
+| <span alt="short" class="action sortby">short name</span>
+| <span alt="title" class="action sortby">title</span>

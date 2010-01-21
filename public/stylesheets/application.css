@@ -18,7 +18,12 @@ a {
     border-bottom:1px dotted gray;
 }
 
+li:hover{
+    background-color: #eaeaea;
+}
+
 textarea{
+    width:100%;
     resize: vertical;
 }
 
@@ -30,8 +35,8 @@ div.textile_preview textarea{
 div.textile_preview div.edit, div.textile_preview div.preview{
     margin:2px;
     display:block;
-    float:left;
-    width:45%;
+    /*float:left;
+    width:45%;*/
 }
 
 div.textile_preview div.preview{
@@ -313,12 +318,16 @@ span.action{
     float:right;
 }
 span.action:hover{
-    background:black;
-    color:white;
+    background:#ddd;
+    color:black;
 }
 
 span.sortby{
     float:none;
+}
+
+span.sortby span.ui-icon{
+    display:inline-block;
 }
 
 span.action a{
@@ -326,6 +335,12 @@ span.action a{
     color:#ab4c27;
     border:none;
 }
+
+span.action a:hover{
+    background:transparent;
+}
+
+
 
 div.closed{
     display:none;

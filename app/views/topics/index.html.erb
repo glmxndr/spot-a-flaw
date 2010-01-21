@@ -8,8 +8,8 @@
 <ul class="topic list">
 <% for topic in @topics %>
   <li>
-    <input type="hidden" class="creation" value="<%= topic.created_at %>"/>
-    <input type="hidden" class="update" value="<%= topic.updated_at %>"/>
+      <span style="display:none" class="creation"><%= topic.created_at %></span>
+      <span style="display:none" class="update"><%= topic.updated_at %></span>
       <% if enabled_user %>
         <span class="action"><%= link_to 'Edit', edit_topic_path(topic) %></span>
       <% end %>

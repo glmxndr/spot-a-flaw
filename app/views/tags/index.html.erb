@@ -3,22 +3,31 @@
 
 <h2 class="toc">Listing tags</h2>
 <div class="toc">
-<table>
-  <tr>
-    <th>Tag name</th>
-    <th>Times used</th>
-  </tr>
 
+Sort by :
+<span alt="creation" class="action sortby">creation time</span>
+| <span alt="update" class="action sortby">update time</span>
+| <span alt="count" class="action sortby">times used</span>
+| <span alt="name" class="action sortby">name</span>
+
+<ul class="tag list">
 <% for tag in @tags %>
-  <tr>
-    <td><%=h tag.name %></td>
-    <td><%=h tag.count %></td>
-    <td><%= link_to 'Show', tag %></td>
-<% if admin_user -%>
-    <td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
-<% end -%>
-  </tr>
+  <li style="clear:both">
+      <span style="display:none" class="creation"><%= tag.created_at %></span>
+      <span style="display:none" class="update"><%= tag.updated_at %></span>
+      <% if enabled_user %>
+        <span class="action"><%= link_to 'Edit', edit_tag_path(tag) %></span>
+      <% end %>
+      <% if admin_user -%>
+        <span class="action"><%= link_to 'Destroy', tag,
+              :confirm => 'Are you sure?',
+              :method => :delete %></span>
+      <% end -%>
+    <span class="tag name title"><%= link_to tag.name, tag %></span>
+    (times used: <span class="tag count"><%= tag.count %></span>)
+  </li>
 <% end %>
-</table>
+</ul>
+
 </div>
 

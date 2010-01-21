@@ -16,9 +16,9 @@
               :confirm => 'Are you sure?',
               :method => :delete %></span>&nbsp;
 <% end -%>
-    <input type="hidden" class="creation" value="<%= fallacy.created_at %>"/>
-    <input type="hidden" class="update" value="<%= fallacy.updated_at %>"/>
     <div class="title">
+      <span style="display:none" class="creation"><%= fallacy.created_at %></span>
+      <span style="display:none" class="update"><%= fallacy.updated_at %></span>
       <span class="shortname"><%= fallacy.shortname %>: </span>
       <span class="title"><%= link_to fallacy.title, fallacy_url(fallacy)%></span>
     </div>
