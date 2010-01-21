@@ -6,6 +6,8 @@ module ApplicationHelper
     text.split[0..(wordcount-1)].join(" ") + (thought.split.size > wordcount ? "..." : "")
   end
 
-
+  def truncurl(url)
+    
+  end
 
 end
