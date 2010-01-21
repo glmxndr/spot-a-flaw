@@ -8,7 +8,7 @@ Sort by :
 <span alt="creation" class="action sortby">creation time</span>
 | <span alt="update" class="action sortby">update time</span>
 | <span alt="count" class="action sortby">times used</span>
-| <span alt="name" class="action sortby">name</span>
+| <span alt="title" class="action sortby">name</span>
 
 <ul class="tag list">
 <% for tag in @tags %>
@@ -23,7 +23,7 @@ Sort by :
               :confirm => 'Are you sure?',
               :method => :delete %></span>
       <% end -%>
-    <span class="tag name title"><%= link_to tag.name, tag %></span>
+    <span class="tag title"><%= link_to tag.name, tag %></span>
     (times used: <span class="tag count"><%= tag.count %></span>)
   </li>
 <% end %>
