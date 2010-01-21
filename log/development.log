@@ -45152,3 +45152,249 @@ Rendered layouts/_navig (12.1ms)
 Rendered layouts/_header (0.2ms)
 Rendered layouts/_footer (0.1ms)
 Completed in 318ms (View: 291, DB: 16) | 200 OK [http://localhost/]
+
+
+Processing TopicsController#index (for 127.0.0.1 at 2010-01-21 22:30:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"topics"}
+  [4;35;1mTopic Load (3.9ms)[0m   [0mSELECT * FROM "topics" [0m
+Rendering template within layouts/application
+Rendering topics/index
+Rendered topics/_index_sort (0.1ms)
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Rendered topics/_new_form (9.7ms)
+Rendered layouts/_navig (1.2ms)
+Rendered layouts/_header (0.2ms)
+Rendered layouts/_footer (0.1ms)
+Completed in 100ms (View: 60, DB: 5) | 200 OK [http://localhost/topics]
+
+
+Processing WelcomeController#show (for 127.0.0.1 at 2010-01-21 22:31:31) [GET]
+  Parameters: {"action"=>"show", "controller"=>"welcome"}
+Rendering template within layouts/application
+Rendering welcome/show
+  [4;35;1mTopic Load (1.9ms)[0m   [0mSELECT * FROM "topics" ORDER BY created_at DESC LIMIT 10[0m
+  [4;36;1mFlag Load (1.1ms)[0m   [0;1mSELECT * FROM "flags" ORDER BY created_at DESC LIMIT 10[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mFallacy Load (0.5ms)[0m   [0;1mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 3) [0m
+  [4;35;1mTopic Load (0.6ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mFallacy Load (0.6ms)[0m   [0mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 1) [0m
+  [4;35;1mTopic Load (0.6ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mFallacy Load (0.8ms)[0m   [0;1mSELECT * FROM "fallacies" ORDER BY created_at DESC LIMIT 10[0m
+  [4;35;1mComment Load (3.5ms)[0m   [0mSELECT * FROM "comments" ORDER BY created_at DESC LIMIT 10[0m
+#######################
+editedcreated_atTue Jan 19 21:37:16 UTC 2010titlemy commentupdated_atTue Jan 19 21:37:16 UTC 2010id18flag_iduser_id1parent_idcontenthere is my commenttopic_id5fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+#######################
+editedcreated_atFri Jan 15 22:49:00 UTC 2010titlecircular comment !updated_atFri Jan 15 22:49:00 UTC 2010id15flag_iduser_id1parent_idcontentMy commenttopic_idfallacy_id3
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+#######################
+editedcreated_atTue Jan 12 22:05:44 UTC 2010titleagainupdated_atTue Jan 12 22:05:44 UTC 2010id14flag_id2user_id3parent_idcontentagaintopic_idfallacy_id
+
+
+
+
+
+  [4;36;1mFlag Load (0.3ms)[0m   [0;1mSELECT * FROM "flags" WHERE ("flags"."id" = 2) [0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;36;1mComment Load (0.7ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."id" = 5) [0m
+#######################
+editedcreated_atMon Jan 11 22:11:46 UTC 2010titlethis is the comment titleupdated_atMon Jan 11 22:11:46 UTC 2010id5flag_id2user_id1parent_idcontentthis is the comment's contenttopic_idfallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "flags" WHERE ("flags"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;35;1mComment Load (0.7ms)[0m   [0mSELECT * FROM "comments" WHERE ("comments"."id" = 10) [0m
+#######################
+editedcreated_atTue Jan 12 21:49:24 UTC 2010titleokupdated_atTue Jan 12 21:49:24 UTC 2010id10flag_iduser_id3parent_idcontentagain ! again !topic_id1fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedcreated_atTue Jan 12 21:49:24 UTC 2010titleokupdated_atTue Jan 12 21:49:24 UTC 2010id10flag_iduser_id3parent_idcontentagain ! again !topic_id1fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedcreated_atTue Jan 12 21:46:15 UTC 2010titleanother one !updated_atTue Jan 12 21:46:15 UTC 2010id9flag_iduser_id3parent_idcontentplease another comment !topic_id1fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;36;1mComment Load (0.7ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."id" = 7) [0m
+#######################
+editedcreated_atTue Jan 12 21:41:08 UTC 2010titlecommentupdated_atTue Jan 12 21:41:08 UTC 2010id7flag_iduser_id3parent_idcontentThe ultimate insult is so great !topic_id1fallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedcreated_atTue Jan 12 21:41:08 UTC 2010titlecommentupdated_atTue Jan 12 21:41:08 UTC 2010id7flag_iduser_id3parent_idcontentThe ultimate insult is so great !topic_id1fallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedfalsecreated_atTue Jan 12 21:16:14 UTC 2010titleNot so sure at all !updated_atTue Jan 12 21:16:14 UTC 2010id6flag_iduser_id3parent_idcontentThis goes square and squaretopic_idfallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Rendered layouts/_navig (12.2ms)
+Rendered layouts/_header (0.2ms)
+Rendered layouts/_footer (0.1ms)
+Completed in 313ms (View: 295, DB: 14) | 200 OK [http://localhost/]
+
+
+Processing WelcomeController#show (for 127.0.0.1 at 2010-01-21 22:35:24) [GET]
+  Parameters: {"action"=>"show", "controller"=>"welcome"}
+Rendering template within layouts/application
+Rendering welcome/show
+  [4;35;1mTopic Load (2.8ms)[0m   [0mSELECT * FROM "topics" ORDER BY created_at DESC LIMIT 10[0m
+  [4;36;1mFlag Load (1.1ms)[0m   [0;1mSELECT * FROM "flags" ORDER BY created_at DESC LIMIT 10[0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mFallacy Load (0.7ms)[0m   [0;1mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 3) [0m
+  [4;35;1mTopic Load (0.7ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mFallacy Load (0.7ms)[0m   [0mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 1) [0m
+  [4;35;1mTopic Load (0.7ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mFallacy Load (1.0ms)[0m   [0;1mSELECT * FROM "fallacies" ORDER BY created_at DESC LIMIT 10[0m
+  [4;35;1mComment Load (3.3ms)[0m   [0mSELECT * FROM "comments" ORDER BY created_at DESC LIMIT 10[0m
+#######################
+editedcreated_atTue Jan 19 21:37:16 UTC 2010titlemy commentupdated_atTue Jan 19 21:37:16 UTC 2010id18flag_iduser_id1parent_idcontenthere is my commenttopic_id5fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+#######################
+editedcreated_atFri Jan 15 22:49:00 UTC 2010titlecircular comment !updated_atFri Jan 15 22:49:00 UTC 2010id15flag_iduser_id1parent_idcontentMy commenttopic_idfallacy_id3
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "fallacies" WHERE ("fallacies"."id" = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+#######################
+editedcreated_atTue Jan 12 22:05:44 UTC 2010titleagainupdated_atTue Jan 12 22:05:44 UTC 2010id14flag_id2user_id3parent_idcontentagaintopic_idfallacy_id
+
+
+
+
+
+  [4;36;1mFlag Load (0.4ms)[0m   [0;1mSELECT * FROM "flags" WHERE ("flags"."id" = 2) [0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;36;1mComment Load (0.8ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."id" = 5) [0m
+#######################
+editedcreated_atMon Jan 11 22:11:46 UTC 2010titlethis is the comment titleupdated_atMon Jan 11 22:11:46 UTC 2010id5flag_id2user_id1parent_idcontentthis is the comment's contenttopic_idfallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "flags" WHERE ("flags"."id" = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;35;1mComment Load (0.8ms)[0m   [0mSELECT * FROM "comments" WHERE ("comments"."id" = 10) [0m
+#######################
+editedcreated_atTue Jan 12 21:49:24 UTC 2010titleokupdated_atTue Jan 12 21:49:24 UTC 2010id10flag_iduser_id3parent_idcontentagain ! again !topic_id1fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedcreated_atTue Jan 12 21:49:24 UTC 2010titleokupdated_atTue Jan 12 21:49:24 UTC 2010id10flag_iduser_id3parent_idcontentagain ! again !topic_id1fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedcreated_atTue Jan 12 21:46:15 UTC 2010titleanother one !updated_atTue Jan 12 21:46:15 UTC 2010id9flag_iduser_id3parent_idcontentplease another comment !topic_id1fallacy_id
+
+
+
+
+
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;36;1mComment Load (0.8ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments"."id" = 7) [0m
+#######################
+editedcreated_atTue Jan 12 21:41:08 UTC 2010titlecommentupdated_atTue Jan 12 21:41:08 UTC 2010id7flag_iduser_id3parent_idcontentThe ultimate insult is so great !topic_id1fallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedcreated_atTue Jan 12 21:41:08 UTC 2010titlecommentupdated_atTue Jan 12 21:41:08 UTC 2010id7flag_iduser_id3parent_idcontentThe ultimate insult is so great !topic_id1fallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "topics" WHERE ("topics"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+#######################
+editedfalsecreated_atTue Jan 12 21:16:14 UTC 2010titleNot so sure at all !updated_atTue Jan 12 21:16:14 UTC 2010id6flag_iduser_id3parent_idcontentThis goes square and squaretopic_idfallacy_id
+
+
+
+
+
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) [0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '1') LIMIT 1[0m
+Rendered layouts/_navig (15.9ms)
+Rendered layouts/_header (0.3ms)
+Rendered layouts/_footer (0.2ms)
+Completed in 367ms (View: 338, DB: 16) | 200 OK [http://localhost/]

@@ -74,7 +74,7 @@ $(function(){
 
   $('h2,h3,h4,h5').filter('.toc').each(function(){
     var self = $(this);
-    var span = $("<span class='ui-icon ui-icon-triangle-2-n-s'/>");
+    var span = $("<span class='ui-icon ui-icon-triangle-2-n-s'>&nbsp;</span>");
     self.prepend(span);
     span.click(function(){
       self.next('div.toc').slideToggle('fast');
@@ -94,7 +94,7 @@ $(function(){
   $('span.action.sortby').click(function(){
     $('span.action.sortby span').remove();
     var self = $(this);
-    var arrow = $("<span class='ui-icon'>");
+    var arrow = $("<span class='ui-icon'>&nbsp;</span>");
     self.prepend(arrow);
     var sortDir;
     if (self.hasClass('asc')){
