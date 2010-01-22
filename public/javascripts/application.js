@@ -15,6 +15,11 @@ $(function(){
     self.remove().appendTo(edit);
     self.after('<a class="tip" href="http://textile.thresholdstate.com/">Format your content with Textile</a>');
 
+    var togglePreview = $("<span class='action'>Toggle preview</span>");
+    togglePreview.insertAfter(self).click(function(){
+      $(this).parent().next('div.preview').toggle();
+    });
+
     self.keyup(function(){
       preview.html($.textile(self.val()));
     });
@@ -28,9 +33,11 @@ $(function(){
     $(this).next('form.new_comment').toggle();
   });
 
-  $('div.comment_head').click(function(){
-    $(this).next('div.comment_body').toggle();
-  });
+  $('div.comment_head')
+    .prepend("<span class='ui-icon ui-icon-triangle-2-n-s'/>")
+    .click(function(){
+      $(this).next('div.comment_body').toggle();
+    });
 
 
   // TOC HEADERS
@@ -87,7 +94,7 @@ $(function(){
 });
 
 
-
+// SORTING IN LISTS
 $(function(){
 
   var items = $('ul.list li');

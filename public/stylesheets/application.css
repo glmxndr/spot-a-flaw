@@ -297,6 +297,12 @@ div.toc.forum{
 div.comment_head{
     cursor:pointer;
 }
+
+div.comment_head span.ui-icon{
+    display:inline-block;
+    margin:0 5px;
+}
+
 div.comment_body{
     display:none;
 }
