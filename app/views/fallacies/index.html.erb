@@ -4,27 +4,7 @@
 <div class="toc all">
 
 <%= render :partial => 'index_sort' %>
-
-<ul class="fallacy list">
-<% for fallacy in @fallacies %>
-  <li>
-<% if enabled_user %>
-<span clas="action"><%= link_to 'Edit', edit_fallacy_path(fallacy) %></span>&nbsp;
-<% end %>
-<% if admin_user -%>
-<span class="action>"<%= link_to 'Destroy', fallacy,
-              :confirm => 'Are you sure?',
-              :method => :delete %></span>&nbsp;
-<% end -%>
-    <div class="title">
-      <span style="display:none" class="creation"><%= fallacy.created_at %></span>
-      <span style="display:none" class="update"><%= fallacy.updated_at %></span>
-      <span class="short"><%= fallacy.shortname %>: </span>
-      <span class="title"><%= link_to fallacy.title, fallacy_url(fallacy)%></span>
-    </div>
-  </li>
-<% end %>
-</ul>
+<%= render :partial => 'fallacies_ul', :locals => {:fallacies => @fallacies} %>
 </div>
 
 <%- if enabled_user -%>

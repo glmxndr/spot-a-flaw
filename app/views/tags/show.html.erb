@@ -9,28 +9,7 @@
 <%- if @tag.count > 0 -%>
 
 <%= render :partial => 'topics/index_sort' %>
-
-<ul class="topic list">
-<% for topic in @topics %>
-  <li>
-    <input type="hidden" class="creation" value="<%= topic.created_at %>"/>
-    <input type="hidden" class="update" value="<%= topic.updated_at %>"/>
-      <% if enabled_user %>
-        <span class="action"><%= link_to 'Edit', edit_topic_path(topic) %></span>
-      <% end %>
-      <% if admin_user -%>
-        <span class="action"><%= link_to 'Destroy', topic,
-              :confirm => 'Are you sure?',
-              :method => :delete %></span>
-      <% end -%>
-    <span class="topic title"><%= link_to topic.title,
-      topic_url(topic) %></span>
-    <!--div class="topic desc">
-      <div><em><%=textilize topic.origin %></em></div>
-    </div-->
-  </li>
-<% end %>
-</ul>
+<%= render :partial => 'topics/topics_ul', :locals =>{:topics => @topics} %>
 
 <%- else -%>
 

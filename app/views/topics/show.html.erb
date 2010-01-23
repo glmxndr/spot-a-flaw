@@ -68,15 +68,7 @@ Tags : <% for tag in @topic.tags -%>
 </div>
 <% end -%>
 
-
-<% if @topic.comments.length > 0 -%>
-<h2 class="toc" id="forum">Forum</h2>
-<div class="toc forum closed">
-<% for comment in @topic.comments %>
-<%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
-<% end %>
-</div>
-<% end -%>
+<%= render :partial => 'comments/forum', :locals => {:comments => @topic.comments} %>
 
 <% if enabled_user -%>
 <h2 class="toc" id="newcomment">New comment</h2>

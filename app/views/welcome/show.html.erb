@@ -4,12 +4,16 @@
 &nbsp;<span class="action"><%= link_to "see all", topics_url -%></span>
 </h2>
 <div class="toc topics">
-<ul>
-<% for topic in recent_topics %>
-<li><%= link_to topic.title, topic_url(topic) -%></li>
-<% end %>
-</ul>
+<%= render :partial => 'topics/topics_ul', :locals => {:topics => recent_topics} %>
 </div>
+
+<h2 class="toc" id="fallacies">Recent fallacies
+&nbsp;<span class="action"><%= link_to "see all", fallacies_url -%></span>
+</h2>
+<div class="toc fallacies">
+<%= render :partial => 'fallacies/fallacies_ul', :locals => {:fallacies => recent_fallacies} %>
+</div>
+
 
 <h2 class="toc" id="flags">Recent flags</h2>
 <div class="toc flags">
@@ -22,17 +26,6 @@
   in the topic
   <%= link_to flag.topic.title, topic_url(flag.topic) -%>
 </li>
-<% end %>
-</ul>
-</div>
-
-<h2 class="toc" id="fallacies">Recent fallacies
-&nbsp;<span class="action"><%= link_to "see all", fallacies_url -%></span>
-</h2>
-<div class="toc fallacies">
-<ul>
-<% for fallacy in recent_fallacies %>
-<li><%= link_to fallacy.title, fallacy_url(fallacy) -%></li>
 <% end %>
 </ul>
 </div>

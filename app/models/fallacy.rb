@@ -7,6 +7,6 @@ class Fallacy < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
   has_many :flags, :dependent => :destroy
-  has_many :topics, :through => :flags
+  has_many :topics, :through => :flags, :uniq => true
 
 end

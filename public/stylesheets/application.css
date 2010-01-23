@@ -168,7 +168,7 @@ ul.list div.topic.desc{
     font-size: 90%;
 }
 
-ul.list span.shortname{
+ul.list span.short{
     display: inline-block;
     width: 10em;
 }

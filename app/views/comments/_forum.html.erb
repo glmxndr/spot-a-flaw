@@ -1,0 +1,8 @@
+<% if comments.length > 0 -%>
+<h2 class="toc" id="forum">Forum</h2>
+  <div class="toc forum">
+    <% for comment in comments %>
+      <%= render :partial => 'comments/_show', :locals => { :comment => comment} %>
+    <% end %>
+  </div>
+<% end -%>

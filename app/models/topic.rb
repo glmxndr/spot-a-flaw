@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
   has_many :fallacies, :through => :flags
 
   has_many :taggings, :dependent => :destroy
-  has_many :tags, :through => :taggings
+  has_many :tags, :through => :taggings, :uniq => true
 
   attr_writer :topic_tags
   after_save :assign_tags
