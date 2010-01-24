@@ -718,3 +718,10 @@ Processing WelcomeController#show (for 86.201.65.251 at 2010-01-24 05:19:44) [GE
 Rendering template within layouts/application
 Rendering welcome/show
 Completed in 78ms (View: 71, DB: 5) | 200 OK [http://nofallacy.net/]
+
+
+Processing WelcomeController#about (for 86.201.65.251 at 2010-01-24 05:39:03) [GET]
+  Parameters: {"action"=>"about", "controller"=>"welcome"}
+Rendering template within layouts/application
+Rendering welcome/about
+Completed in 22ms (View: 20, DB: 1) | 200 OK [http://nofallacy.net/about]
