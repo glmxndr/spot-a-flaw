@@ -240,7 +240,7 @@ div.content h6{font-size:100%;font-weight:normal;}
 
 h2.toc,h3.toc,h4.toc,h5.toc,h6.toc{
     border-bottom:1px solid black;
-    margin:1em 0;
+    margin:1em 0 0 0;
 }
 h2.toc:hover,h3.toc:hover,h4.toc:hover,h5.toc:hover,h6.toc:hover{
     background:#eaeaea;
@@ -288,6 +288,7 @@ h4.toc + div.toc{
 
 div.toc{
     padding:0em 1em;
+    border-left:1px solid gray;
 }
 
 div.toc.forum{
