@@ -221,20 +221,20 @@ h1,h2,h3,h4,h5,h6{
     font-family:Georgia, serif;
     font-weight:bold;
 }
-h1{font-size:250%;line-height:2.5ex;}
-h2{font-size:200%;line-height:2ex;}
-h3{font-size:170%;line-height:1.7ex;}
-h4{font-size:150%;line-height:1.5ex;}
-h5{font-size:120%;line-height:1.3ex;}
-h6{font-size:100%;line-height:1ex;}
+h1{font-size:250%;}
+h2{font-size:200%;}
+h3{font-size:170%;}
+h4{font-size:150%;}
+h5{font-size:120%;}
+h6{font-size:100%;}
 
 div.content h1,div.content h2, div.content h3, div.content h4, div.content h5, div.content h6{
 font-family: sans-serif;
 }
-div.content h1{font-size:120%;line-height:1.2ex;}
-div.content h2{font-size:120%;line-height:1.2ex;font-weight:normal;}
-div.content h3{font-size:110%;line-height:1.1ex;}
-div.content h4{font-size:110%;line-height:1.1ex;font-weight:normal;}
+div.content h1{font-size:120%;}
+div.content h2{font-size:120%;font-weight:normal;}
+div.content h3{font-size:110%;}
+div.content h4{font-size:110%;font-weight:normal;}
 div.content h5{font-size:100%;}
 div.content h6{font-size:100%;font-weight:normal;}
 
@@ -255,14 +255,12 @@ h1.toc{
 h2.toc{
     color:black;
     font-size:150%;
-    line-height:1.5ex;
     padding:0 0 0.25em 50px;
     border-bottom:1px solid gray;
 }
 h3.toc{
     color:#666;
     font-size:130%;
-    line-height:1.3ex;
     margin:0.75em 0;
     margin-left:20px;
     padding:0 0 0.25em 50px;
@@ -274,7 +272,6 @@ h3.toc + div.toc{
 h4.toc{
     color:#888;
     font-size:120%;
-    line-height:1.2ex;
     font-weight:normal;
     font-style:italic;
     margin:0.5em 0;
@@ -289,10 +286,11 @@ h4.toc + div.toc{
 div.toc{
     padding:1em 1em;
     border-left:1px solid gray;
+	background:transparent;
 }
 
 div.toc.forum{
-    display:none;
+    /*display:none;*/
 }
 
 div.comment_head{
@@ -360,7 +358,7 @@ span.action a:hover{
 
 
 div.closed{
-    display:none;
+    /*display:none;*/
 }
 
 blockquote{
