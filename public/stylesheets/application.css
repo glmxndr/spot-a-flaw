@@ -18,7 +18,25 @@ a {
     border-bottom:1px dotted gray;
 }
 
-li:hover{
+table{
+    width:100%;
+}
+
+th{
+    text-align:center;
+    background:#666;
+    color:white;
+}
+td {
+    border:1px solid #bbb;
+    padding:3px;
+}
+
+li,h1,h2,h3,h4,h5,h6{
+    clear:both;
+}
+
+li:hover, tr:hover{
     background-color: #eaeaea;
 }
 
@@ -170,7 +188,7 @@ ul.list div.topic.desc{
 
 ul.list span.short{
     display: inline-block;
-    width: 10em;
+    min-width: 10em;
 }
 
 div.comment{
@@ -286,7 +304,7 @@ h4.toc + div.toc{
 div.toc{
     padding:1em 1em;
     border-left:1px solid gray;
-	background:transparent;
+  background:transparent;
 }
 
 div.toc.forum{

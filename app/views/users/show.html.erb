@@ -1,6 +1,10 @@
-<h1 class="toc">Profile Page</h1>
+<div class="top title">
+<h2>USER PAGE
+</h2>
+<h1>&#151;&nbsp;<%=h @user.name %>&nbsp;&#151</h1>
+</div>
 
-<h2 class="toc">Your profile</h2>
+<h2 class="toc">Profile</h2>
 <div class="toc">
 <p>
   <b>Name:</b>
@@ -23,9 +27,48 @@
   <%=h @user.admin %>
 </p>
 <% end -%>
-</div>
+
 <% if can_edit_user(@user) -%>
 <%= link_to 'Edit', edit_user_path(@user) %>
 <% end -%>
+</div>
+
+<% unless @user.comments.empty? -%>
+<h2 class="toc">Comments</h2>
+<div class="toc">
+<ul>
+<% for comment in @user.comments %>
+<li>
+    <span class="action"><%= link_to 'Edit', edit_comment_path(comment) %></span>
+    <span class="action"><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></span>
+
+<%= link_to comment.title, initial_content_url(comment)+"#comment_"+comment.id.to_s -%>
+  by <%= comment.user.name %>
+</li>
+<% end %>
+</ul>
+</div>
+<% end -%>
+
+<% unless @user.flags.empty? -%>
+<h2 class="toc">Flags</h2>
+<div class="toc">
+<ul>
+<% for flag in @user.flags %>
+<li><%= @user.name %>
+  <%= link_to "flagged", flag_url(flag) -%>
+  the fallacy
+  <%= link_to flag.fallacy.shortname, fallacy_url(flag.fallacy) -%>
+  in the topic
+  <%= link_to flag.topic.title, topic_url(flag.topic) -%>
+</li>
+<% end %>
+</ul>
+</div>
+<% end -%>
+
+
+
+
 
 

@@ -1,6 +1,6 @@
 class Fallacy < ActiveRecord::Base
 
-  validates_length_of :title, :within => 15..255
+  validates_length_of :title, :within => 5..255
   validates_presence_of :content
   validates_presence_of :shortname
   validates_uniqueness_of :shortname

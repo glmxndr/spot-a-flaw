@@ -6,15 +6,13 @@
     <th>User</th>
     <th>Title</th>
     <th>Content</th>
-    <th>Edited</th>
   </tr>
 
 <% for comment in @comments %>
   <tr>
-    <td><%=h comment.user_id %></td>
+    <td><%=h comment.user.name %></td>
     <td><%=h comment.title %></td>
-    <td><%=h comment.content %></td>
-    <td><%=h comment.edited %></td>
+    <td><%=h truncate comment.content, :length => 100 %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>

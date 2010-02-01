@@ -2,7 +2,7 @@
 <% for fallacy in fallacies %>
   <li>
 <% if enabled_user %>
-<span clas="action"><%= link_to 'Edit', edit_fallacy_path(fallacy) %></span>&nbsp;
+<span class="action"><%= link_to 'Edit', edit_fallacy_path(fallacy) %></span>&nbsp;
 <% end %>
 <% if admin_user -%>
 <span class="action>"<%= link_to 'Destroy', fallacy,

@@ -1,13 +1,17 @@
 <div id="comment_<%=comment.id%>" class="comment">
 <div class="comment_head">
   <span class="title"><%= comment.title %></span><br/><em>posted by
-  <%= comment.user.name %> on <%= comment.created_at.to_s(:long) %></em>
+  <%= comment.user.name %> on <%= comment.created_at.to_s(:long)
+  %></em>
+  <% if can_edit_comment(comment) -%>
+  <span class="action"><%= link_to "Edit", edit_comment_path(comment) %></span>
+  <span class="action"><%= link_to "Destroy", comment, :confirm => 'Are you sure?', :method => :delete %></span>
+  <% end -%>
 </div>
 <div class="comment_body">
   <div class="content">
     <%= textilize comment.content %>
   </div>
-
   <%- if enabled_user -%>
     <%- form_for [comment,Comment.new] do |f| -%>
       <%= f.label :title %>
@@ -18,10 +22,8 @@
       <%= f.submit "Send" %>
     <%- end -%>
   <%- end -%>
-
 </div>
 <div class="comment_forum">
-
   <%- for subcomment in comment.children -%>
     <%= render :partial => 'comments/_show', :locals => {:comment => subcomment} %>
   <%- end -%>

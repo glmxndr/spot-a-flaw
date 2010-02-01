@@ -2,11 +2,16 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    unless admin_user
+    unless enabled_user
       flash[:error] = 'Forbidden action.'
       redirect_to root_url
     end
-    @comments = Comment.find(:all)
+
+    if admin_user
+      @comments = Comment.find(:all)
+    else
+      @comments = current_user.comments
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -55,11 +60,11 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    unless admin_user
+    @comment = Comment.find(params[:id])
+    unless can_edit_comment(@comment)
       flash[:error] = 'Forbidden action.'
       redirect_to root_url
     end
-    @comment = Comment.find(params[:id])
   end
 
   # POST /comments
@@ -110,14 +115,12 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
-    unless admin_user
+    @comment = Comment.find(params[:id])
+    unless can_edit_comment(@comment)
       flash[:error] = 'Forbidden action.'
       redirect_to root_url
     end
-
-    @comment = Comment.find(params[:id])
     @comment.destroy
-
     respond_to do |format|
       format.html { redirect_to(comments_url) }
       format.xml  { head :ok }
