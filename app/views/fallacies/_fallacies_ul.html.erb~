@@ -5,7 +5,13 @@
 <span class="action"><%= link_to 'Edit', edit_fallacy_path(fallacy) %></span>
 <% end %>
 <% if admin_user -%>
+<<<<<<< HEAD:app/views/fallacies/_fallacies_ul.html.erb
+<span class="action"><%= link_to 'Destroy', fallacy,
+              :confirm => 'Are you sure?',
+              :method => :delete %></span>&nbsp;
+=======
 <span class="action"><%= link_to 'Destroy', fallacy, :confirm => 'Are you sure?', :method => :delete %></span>
+>>>>>>> CSS for TOC:app/views/fallacies/_fallacies_ul.html.erb
 <% end -%>
       <span class="topic title"><%= link_to fallacy.title, fallacy_url(fallacy)%></span>
       <b><span class="short"">(<%= fallacy.shortname %>)</span></b>

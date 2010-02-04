@@ -21,9 +21,8 @@
 <% for flag in recent_flags %>
 <li><%= flag.user.name %>
   <%= link_to "flagged", flag_url(flag) -%>
-  the fallacy
   <%= link_to flag.fallacy.shortname, fallacy_url(flag.fallacy) -%>
-  in the topic
+  in
   <%= link_to flag.topic.title, topic_url(flag.topic) -%>
 </li>
 <% end %>
