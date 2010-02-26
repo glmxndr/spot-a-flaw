@@ -21,6 +21,14 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+  <p>
+    Receive email notifications (new topics and fallacies)<br />
+    <% if @user.notified -%>
+      <%= f.check_box :notified, {:checked => 'checked'} %>
+    <% else -%>
+      <%= f.check_box :notified %>
+    <% end -%>
+  </p>
 
 <% if admin_user -%>
   <p>

@@ -56,6 +56,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        Notificator.deliver_new_topic(@topic)
         flash[:notice] = 'Topic was successfully created.'
         format.html { redirect_to(@topic) }
         format.xml  { render :xml => @topic, :status => :created, :location => @topic }

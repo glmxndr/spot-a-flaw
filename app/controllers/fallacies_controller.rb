@@ -56,6 +56,7 @@ class FallaciesController < ApplicationController
 
     respond_to do |format|
       if @fallacy.save
+        Notificator.deliver_new_fallacy(@fallacy)
         flash[:notice] = 'Fallacy was successfully created.'
         format.html { redirect_to(@fallacy) }
         format.xml  { render :xml => @fallacy, :status => :created, :location => @fallacy }

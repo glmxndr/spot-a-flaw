@@ -70,8 +70,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.enabled = false
     @user.admin = false
+    @user.notified = true
     respond_to do |format|
       if @user.save
+        Notificator.deliver_new_registered_user(@user)
         flash[:notice] = 'User was successfully created.'
         format.html { redirect_to(@user) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
