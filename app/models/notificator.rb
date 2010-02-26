@@ -13,7 +13,7 @@ class Notificator < ActionMailer::Base
         bcc          User.notified_users.collect {|a| a.email}
         from         "webmaster@nofallacy.net"
         subject      "[nofallacy.net] New fallacy posted !"
-        body         :topic => topic
+        body         :fallacy => fallacy
     end
 
     def new_topic(topic)
